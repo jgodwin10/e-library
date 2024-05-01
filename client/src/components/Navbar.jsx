@@ -6,7 +6,7 @@ const Navbar = () => {
   const location = useLocation().pathname;
   return (
     <>
-      <div className="bg-white md:px-20 py-5 px-4 items-center flex justify-between">
+      <div className="bg-white fixed md:relative top-0 left-0 w-full z-[9999999] md:px-20 py-5 px-4 items-center flex justify-between">
         <img className="h-[48px]" src={Logo} alt="" />
         <div className="border-2 w-[500px] hidden lg:flex rounded-3xl border-blue-500  h-[50px] justify-start">
           <input
@@ -15,10 +15,10 @@ const Navbar = () => {
           />
         </div>
         <div className="flex items-center">
-          <p className="font-semibold cursor-pointer  text-white bg-blue-500 py-2 px-4 rounded-2xl mr-5">
+          <p className="font-semibold cursor-pointer  text-white bg-blue-500 py-2 text-center md:text-base text-[14px] w-[70px] md:w-[100px] rounded-3xl mr-2 md:mr-5">
             Login
           </p>
-          <p className="font-semibold cursor-pointer text-white bg-blue-500 py-2 px-4 rounded-2xl">
+          <p className="font-semibold cursor-pointer text-white bg-blue-500 py-2 text-center md:text-base text-[14px] w-[70px] md:w-[100px] rounded-3xl">
             Sign Up
           </p>
         </div>

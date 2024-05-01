@@ -1,17 +1,16 @@
-import React from 'react'
-import Navbar from './components/Navbar'
-import { Outlet } from 'react-router-dom';
+import React from "react";
+import Navbar from "./components/Navbar";
+import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
     <>
       <Navbar />
-          <div className='max-w-[1440px] mx-auto px-4'>
-              <Outlet />
-          </div>
-          
+      <div className="mt-20 md:mt-0">
+        <Outlet />
+      </div>
     </>
   );
-}
+};
 
-export default Layout
+export default Layout;
