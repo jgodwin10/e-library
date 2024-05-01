@@ -8,9 +8,9 @@ const BooksCategory = () => {
         Faculties
       </div>
       <div className="max-w-[1440px] py-20 grid md:grid-cols-4 sm:grid-cols-3 grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6 mx-auto px-4">
-        <div className="bg-white rounded-md md:pt-3 p-2 md:px-3">
+        <div className="bg-white rounded-md duration-500 md:pt-3 p-2 md:px-3">
           <img className="rounded-md" src={Book} alt="" />
-          <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold py-1 md:pt-3 md:pb-4">
+          <p className="text-blue-500  cursor-pointer md:text-[22px] text-center font-semibold py-1 md:pt-3 md:pb-4">
             Physical Science
           </p>
         </div>
