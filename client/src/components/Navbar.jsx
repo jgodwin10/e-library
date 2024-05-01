@@ -23,7 +23,7 @@ const Navbar = () => {
           </p>
         </div>
       </div>
-      <div className="bg-blue-500 hidden md:block shadow-2xl py-5">
+      <div className="bg-blue-500 hidden md:block shadow-2xl px-4 py-5">
         <ul className="flex justify-evenly items-center text-white">
           <Link
             to={"/"}
