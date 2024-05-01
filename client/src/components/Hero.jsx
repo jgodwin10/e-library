@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <div
       style={{ "--image-url": `url(${Books})` }}
-      className="md:h-[80vh] h-[60vh] bg-[image:var(--image-url)] bg-cover before:contents-[''] before:w-full before:h-full before:bg-black/60 before:absolute before:top-0 before:left-0 relative flex items-center "
+      className="md:h-[80vh] h-[60vh] bg-[image:var(--image-url)] bg-cover px-5 before:contents-[''] before:w-full before:h-full before:bg-black/60 before:absolute before:top-0 before:left-0 relative flex items-center "
     >
       <div className=" w-full text-white z-[9999] text-center">
         <h2 className="md:text-[45px] text-[18px]  font-semibold">
