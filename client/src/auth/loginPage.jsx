@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function LoginPage() {
     const [formData, setFormData] = useState({
-        email: "",
+        matric: "",
         password: "",
     });
     const [errors, setErrors] = useState({});
@@ -22,14 +22,14 @@ export default function LoginPage() {
             // Proceed with login process (e.g., send data to backend)
             console.log("Form submitted:", formData);
             // Reset form data
-            setFormData({ email: "", password: "" });
+            setFormData({ matric: "", password: "" });
         }
     };
 
     const validateFormData = (data) => {
         let errors = {};
         if (!data.email) {
-            errors.email = "Email is required";
+            errors.matric = "Email is required";
         }
         if (!data.password) {
             errors.password = "Password is required";
@@ -62,21 +62,21 @@ export default function LoginPage() {
                         <div className="mt-10">
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 <div>
-                                    <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
-                                        Email address
+                                    <label htmlFor="matric" className="block text-sm font-medium leading-6 text-gray-900">
+                                        Matric No.
                                     </label>
                                     <div className="mt-2">
                                         <input
-                                            id="email"
-                                            name="email"
-                                            type="email"
-                                            value={formData.email}
+                                            id="matric"
+                                            name="matric"
+                                            type="text"
+                                            value={formData.matric}
                                             onChange={handleChange}
-                                            autoComplete="email"
+                                            autoComplete
                                             required
                                             className={`block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 ${errors.email && 'border-red-500'}`}
                                         />
-                                        {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
+                                        {errors.matric && <p className="text-red-500 text-xs mt-1">{errors.matric}</p>}
                                     </div>
                                 </div>
 

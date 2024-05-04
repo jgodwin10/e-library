@@ -1,9 +1,20 @@
 import React from "react";
 import Logo from "../images/logo.png";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const location = useLocation().pathname;
+
+  const navigate = useNavigate()
+
+  const handleLogin = () => {
+    navigate('/login')
+  }
+  const handleSignup = () => {
+    navigate('/register')
+  }
+
+
   return (
     <>
       <div className="bg-white fixed md:relative top-0 left-0 w-full z-[9999999] md:px-20 py-5 px-4 items-center flex justify-between">
@@ -15,10 +26,10 @@ const Navbar = () => {
           />
         </div>
         <div className="flex items-center">
-          <p className="font-semibold cursor-pointer  text-white bg-blue-500 py-2 text-center md:text-base text-[14px] w-[70px] md:w-[100px] rounded-3xl mr-2 md:mr-5">
+          <p onClick={handleLogin} className="font-semibold cursor-pointer  text-white bg-blue-500 py-2 text-center md:text-base text-[14px] w-[70px] md:w-[100px] rounded-3xl mr-2 md:mr-5">
             Login
           </p>
-          <p className="font-semibold cursor-pointer text-white bg-blue-500 py-2 text-center md:text-base text-[14px] w-[70px] md:w-[100px] rounded-3xl">
+          <p onClick={handleSignup} className="font-semibold cursor-pointer text-white bg-blue-500 py-2 text-center md:text-base text-[14px] w-[70px] md:w-[100px] rounded-3xl">
             Sign Up
           </p>
         </div>
