@@ -3,9 +3,11 @@ import Logo from "../images/logo.png";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LuMenu } from "react-icons/lu";
 import { LiaTimesSolid } from "react-icons/lia";
+import Avatar from "../images/avatar.png";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [acc, setAcc] = useState(false);
   const location = useLocation().pathname;
 
   const navigate = useNavigate();
@@ -41,8 +43,34 @@ const Navbar = () => {
             Sign Up
           </p>
         </div>
-        <div className="md:hidden">
-          <LuMenu onClick={() => setOpen(!open)} className="size-8 " />
+
+        <div className="flex gap-x-4 items-center">
+          <div className="relative">
+            <img
+              onClick={() => setAcc(!acc)}
+              className="size-[48px] rounded-full cursor-pointer"
+              src={Avatar}
+              alt=""
+            />
+            <div
+              className={`bg-blue-500 absolute top-14 text-white py-4 px-5 flex flex-col gap-3 duration-1000 rounded-lg shadow-2xl right-0 ${
+                !acc ? "-translate-y-[50vh]" : "translate-y-0"
+              } `}
+            >
+              <p className="hover:text-black/80 duration-700 cursor-pointer">
+                Profile
+              </p>
+              <p className="hover:text-black/80 duration-700 cursor-pointer">
+                Collections
+              </p>
+              <p className="hover:text-black/80 duration-700 cursor-pointer">
+                Logout
+              </p>
+            </div>
+          </div>
+          <div className="md:hidden">
+            <LuMenu onClick={() => setOpen(!open)} className="size-8 " />
+          </div>
         </div>
       </div>
       <div
@@ -109,7 +137,7 @@ const Navbar = () => {
             <p
               onClick={() => {
                 setOpen(!open);
-                handleLogin()
+                handleLogin();
               }}
               className="font-semibold cursor-pointer  text-blue-500 bg-white hover:bg-white/70 duration-500 py-2 text-center md:text-base text-[14px] w-[100px] rounded-3xl mr-2 md:mr-5"
             >
@@ -118,7 +146,7 @@ const Navbar = () => {
             <p
               onClick={() => {
                 setOpen(!open);
-                handleSignup()
+                handleSignup();
               }}
               className="font-semibold cursor-pointer text-blue-500 bg-white py-2 hover:bg-white/70 duration-500 text-center md:text-base text-[14px] w-[100px] rounded-3xl"
             >
