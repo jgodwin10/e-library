@@ -4,6 +4,8 @@ import Layout from './Layout';
 import Home from './pages/Home';
 import LoginPage from './auth/loginPage';
 import Register from './auth/register';
+import Department from './pages/Department';
+import DepartmentView from './pages/DepartmentView';
 
 const App = () => {
   return (
@@ -12,9 +14,11 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
-           <Route path='/login' element={<LoginPage/>}/>
-           <Route path='/register' element={<Register/>}/>
-           
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/departments" element={<Department />} />
+            <Route path="/departments" element={<Department />} />
+            <Route path="/departments/:name" element={<DepartmentView />} />
           </Route>
         </Routes>
       </BrowserRouter>
