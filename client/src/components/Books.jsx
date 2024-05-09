@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Book from "../images/Books.jpg";
 
-
-
-const Books = ({pdf}) => {
-  
-
+const Books = ({ pdf }) => {
   return (
     <div className="bg-white mb-10 border rounded-xl">
       <img
-        className="h-[300px] object-cover rounded-t-xl"
+        className="h-[300px] object-cover w-full rounded-t-xl"
         src={`https://e-library-2kxw.onrender.com/files/${pdf.image}`}
         alt=""
       />

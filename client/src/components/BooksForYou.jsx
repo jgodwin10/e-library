@@ -33,7 +33,7 @@ const BooksForYou = () => {
 
   const showPdf = (pdf) => {
     // window.open(`http://localhost:5000/files/${pdf}`, "_blank", "noreferrer");
-    setPdfFile(`http://localhost:3000/files/${pdf}`);
+    setPdfFile(`https://e-library-2kxw.onrender.com/files/${pdf}`);
   };
 
   return (
@@ -70,15 +70,14 @@ const BooksForYou = () => {
         modules={[Pagination, Autoplay]}
         className="mySwiper max-w-[1440px] mx-auto"
       >
-        
-        {allImage.map((item) => {
-  return (
-    <SwiperSlide key={item.id}>
-      {" "}
-      <Books pdf={item} />
-    </SwiperSlide>
-  );
-})}
+        {allImage.map((item, index) => {
+          return (
+            <SwiperSlide key={index}>
+              {" "}
+              <Books key={index} pdf={item} />
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );
