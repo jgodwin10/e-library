@@ -24,7 +24,9 @@ const BooksForYou = () => {
   }, []);
 
   const getPdf = async () => {
-    const result = await axios.get("http://localhost:3000/get-files");
+    const result = await axios.get(
+      "https://e-library-2kxw.onrender.com/get-files"
+    );
     setAllImage(result.data.data);
     console.log(allImage);
   };
