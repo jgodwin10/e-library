@@ -5,8 +5,7 @@ import { UserMiddleware } from "./src/middleware/AuthMiddleware.js";
 import router from "./src/Router/UserRoutes.js";
 import multer from "multer";
 import { Books } from "./src/config/db/BooksModel.js";
-import cors from 'cors'
-
+import cors from "cors";
 
 dotenv.config();
 
@@ -30,42 +29,42 @@ const storage = multer.diskStorage({
   },
 });
 
-
 const upload = multer({ storage: storage });
 
-app.post("/upload-files", upload.fields([{name: "file", maxCount : 10}, {name: 'image', maxCount: 10}]), async (req, res) => {
- 
-  const title = req.body.title;
-  const pdf = req.files.file[0].filename;
-  const image = req.files.image[0].filename
+app.post(
+  "/upload-files",
+  upload.fields([
+    { name: "file", maxCount: 10 },
+    { name: "image", maxCount: 10 },
+  ]),
+  async (req, res) => {
+    const { author, title, category } = req.body;
+    const pdf = req.files.file[0].filename;
+    const image = req.files.image[0].filename;
 
-  
-  try {
-    await Books.create({ title, pdf, image });
-    res.send({ status: "ok" });
-  } catch (error) {
-    res.json({ status: error });
+
+    try {
+      await Books.create({ title, pdf, image, author, category });
+      res.send({ status: "ok" });
+    } catch (error) {
+      res.json({ status: error });
+    }
   }
-});
+);
 
 app.get("/get-files", async (req, res) => {
   try {
     Books.find({}).then((data) => {
       res.send({ status: "ok", data: data });
     });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 });
-
 
 app.use(router);
 
-
-
-
-
 app.use(UserMiddleware);
-
-
 
 app.listen(3000, () => {
   console.log("server started");

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Books from "./Books";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -6,7 +6,34 @@ import "swiper/css/pagination";
 
 import { Pagination, Autoplay } from "swiper/modules";
 
+import { pdfjs } from "react-pdf";
+import PdfComp from "../PdfComp";
+import axios from "axios";
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  "pdfjs-dist/build/pdf.worker.min.js",
+  import.meta.url
+).toString();
+
 const BooksForYou = () => {
+  const [allImage, setAllImage] = useState([]);
+  const [pdfFile, setPdfFile] = useState(null);
+
+  useEffect(() => {
+    getPdf();
+  }, []);
+
+  const getPdf = async () => {
+    const result = await axios.get("http://localhost:3000/get-files");
+    setAllImage(result.data.data);
+    console.log(allImage);
+  };
+
+  const showPdf = (pdf) => {
+    // window.open(`http://localhost:5000/files/${pdf}`, "_blank", "noreferrer");
+    setPdfFile(`http://localhost:3000/files/${pdf}`);
+  };
+
   return (
     <div className="py-10 px-4 md:px-8">
       <h2 className="md:text-3xl text-[20px] pb-8 md:pb-16 md:pt-5 font-semibold text-center">
@@ -41,46 +68,15 @@ const BooksForYou = () => {
         modules={[Pagination, Autoplay]}
         className="mySwiper max-w-[1440px] mx-auto"
       >
-        <SwiperSlide>
-          {" "}
-          <Books />
-        </SwiperSlide>
-        <SwiperSlide>
-          {" "}
-          <Books />
-        </SwiperSlide>
-        <SwiperSlide>
-          {" "}
-          <Books />
-        </SwiperSlide>
-        <SwiperSlide>
-          {" "}
-          <Books />
-        </SwiperSlide>
-        <SwiperSlide>
-          {" "}
-          <Books />
-        </SwiperSlide>
-        <SwiperSlide>
-          {" "}
-          <Books />
-        </SwiperSlide>
-        <SwiperSlide>
-          {" "}
-          <Books />
-        </SwiperSlide>
-        <SwiperSlide>
-          {" "}
-          <Books />
-        </SwiperSlide>
-        <SwiperSlide>
-          {" "}
-          <Books />
-        </SwiperSlide>
-        <SwiperSlide>
-          {" "}
-          <Books />
-        </SwiperSlide>
+        
+        {allImage.map((item) => {
+  return (
+    <SwiperSlide key={item.id}>
+      {" "}
+      <Books pdf={item} />
+    </SwiperSlide>
+  );
+})}
       </Swiper>
     </div>
   );

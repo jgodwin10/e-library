@@ -6,6 +6,7 @@ import LoginPage from './auth/loginPage';
 import Register from './auth/register';
 import Department from './pages/Department';
 import DepartmentView from './pages/DepartmentView';
+import Upload from './Admin/Upload';
 
 const App = () => {
   return (
@@ -16,9 +17,9 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/upload" element={<Upload />} />
             <Route path="/departments" element={<Department />} />
-            <Route path="/departments" element={<Department />} />
-            <Route path="/departments/:name" element={<DepartmentView />} />
+            <Route path="/:name" element={<DepartmentView />} />
           </Route>
         </Routes>
       </BrowserRouter>

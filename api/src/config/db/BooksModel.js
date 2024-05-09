@@ -5,6 +5,8 @@ const BookSchema = new mongoose.Schema(
     image: String,
     pdf: String,
     title: String,
+    author: String,
+    category: String
   },
   { collection: "Books" }
 );

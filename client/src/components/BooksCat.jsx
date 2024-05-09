@@ -6,7 +6,7 @@ const BooksCat = ({ name, link }) => {
     const navigate = useNavigate()
 
     const handleNav = () => {
-      navigate(`/departments/${link}`);
+      navigate(`/${link}`);
     }
 
   return (
