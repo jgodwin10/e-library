@@ -14,6 +14,8 @@ mongoose.connect(process.env.MONGODB).then(() => {
   console.log("connected");
 });
 
+const Port = process.env.PORT || 3000;
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -67,6 +69,6 @@ app.use(UserMiddleware);
 
 
 
-app.listen(3000, () => {
-  console.log("server started");
+app.listen(Port, () => {
+  console.log(`server started on Port: ${Port}`);
 });
