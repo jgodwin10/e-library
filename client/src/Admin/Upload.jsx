@@ -115,7 +115,7 @@ const Upload = () => {
           onChange={(e) => setCategory(e.target.value)}
         >
           <option value="">Choose Department</option>
-          <option value={'computer-science'}>Computer Science</option>
+          <option>Computer Science</option>
           <option>Physics</option>
           <option>Mathematics</option>
           <option>Chemistry</option>
