@@ -55,6 +55,10 @@ app.post(
   }
 );
 
+app.get('/', (req, res) => {
+  res.send("Hello")
+})
+
 app.get("/get-files", async (req, res) => {
   try {
     Books.find({}).then((data) => {
