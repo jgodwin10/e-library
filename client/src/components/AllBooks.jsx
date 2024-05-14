@@ -33,7 +33,7 @@ const AllBooks = () => {
     if (filter) {
       setItem(
         allImage
-          .filter((item) => item.title.toLowerCase().includes(filter))
+          .filter((item) => item.title.toLowerCase().includes(filter.toLowerCase()))
           .map((item, index) => {
             return <Books key={index} pdf={item} />;
           })
