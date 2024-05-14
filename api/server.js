@@ -6,7 +6,7 @@ import router from "./src/Router/UserRoutes.js";
 import multer from "multer";
 import { Books } from "./src/config/db/BooksModel.js";
 import cors from "cors";
-import http from 'http'
+
 
 dotenv.config();
 
@@ -33,7 +33,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const server = http.createServer(app)
+
 
 const upload = multer({ storage: storage });
 
@@ -49,6 +49,7 @@ app.post(
     const image = req.files.image[0].filename;
 
 
+
     try {
       await Books.create({ title, pdf, image, author, category });
       res.send({ status: "ok" });
@@ -58,9 +59,7 @@ app.post(
   }
 );
 
-app.get('/', (req, res) => {
-  res.send("Hello")
-})
+
 
 app.get("/get-files", async (req, res) => {
   try {
@@ -76,6 +75,6 @@ app.use(router);
 
 app.use(UserMiddleware);
 
-server.listen(Port, () => {
+app.listen(Port, () => {
   console.log(`server started on Port: ${Port}`);
 });
