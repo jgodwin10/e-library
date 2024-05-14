@@ -8,7 +8,7 @@ const Upload = () => {
   const [file, setFile] = useState("");
   const [image, setImage] = useState("");
   const [author, setAuthor] = useState("");
-  const [category, setCategory] = useState('')
+  const [category, setCategory] = useState("");
 
   const submitImage = async (e) => {
     e.preventDefault();
@@ -20,7 +20,7 @@ const Upload = () => {
     formData.append("category", category);
 
     const result = await axios.post(
-      "https://e-library-2kxw.onrender.com/upload-files",
+      "https://e-library-server-mu.vercel.app/upload-files",
       formData,
       {
         headers: { "Content-Type": "multipart/form-data" },
@@ -101,7 +101,10 @@ const Upload = () => {
               }}
             />
             {image ? (
-              <img className="rounded-lg w-[300px]" src={URL.createObjectURL(image)} />
+              <img
+                className="rounded-lg w-[300px]"
+                src={URL.createObjectURL(image)}
+              />
             ) : (
               <img className="w-[300px] " src={upload} alt="" />
             )}

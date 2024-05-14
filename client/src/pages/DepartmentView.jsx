@@ -16,7 +16,7 @@ const DepartmentView = () => {
 
   const getPdf = async () => {
     const result = await axios.get(
-      "https://e-library-2kxw.onrender.com/get-files"
+      "https://e-library-server-mu.vercel.app/get-files"
     );
     setAllImage(result.data.data);
   };

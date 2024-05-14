@@ -25,7 +25,7 @@ const BooksForYou = () => {
 
   const getPdf = async () => {
     const result = await axios.get(
-      "https://e-library-2kxw.onrender.com/get-files"
+      "https://e-library-server-mu.vercel.app/get-files"
     );
     setAllImage(result.data.data);
     console.log(allImage);
@@ -33,7 +33,7 @@ const BooksForYou = () => {
 
   const showPdf = (pdf) => {
     // window.open(`http://localhost:5000/files/${pdf}`, "_blank", "noreferrer");
-    setPdfFile(`https://e-library-2kxw.onrender.com/files/${pdf}`);
+    setPdfFile(`https://e-library-server-mu.vercel.app/files/${pdf}`);
   };
 
   return (
@@ -70,32 +70,15 @@ const BooksForYou = () => {
         modules={[Pagination, Autoplay]}
         className="mySwiper max-w-[1440px] mx-auto"
       >
-        {/* {allImage.map((item, index) => {
+        {allImage.map((item, index) => {
           return (
             <SwiperSlide key={index}>
               {" "}
               <Books key={index} pdf={item} />
             </SwiperSlide>
           );
-        })} */}
-        <SwiperSlide>
-          <Books />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Books />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Books />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Books />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Books />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Books />
-        </SwiperSlide>
+        })}
+      
       </Swiper>
     </div>
   );
