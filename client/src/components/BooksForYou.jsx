@@ -16,7 +16,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 const BooksForYou = () => {
-  onst [allImage, setAllImage] = useState([]);
+  const [allImage, setAllImage] = useState([]);
   const [pdfFile, setPdfFile] = useState(null);
 
   useEffect(() => {

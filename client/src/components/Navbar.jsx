@@ -4,12 +4,15 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LuMenu } from "react-icons/lu";
 import { LiaTimesSolid } from "react-icons/lia";
 import Avatar from "../images/avatar.png";
+import { search } from "../redux/Util";
+import { useDispatch } from "react-redux";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [acc, setAcc] = useState(false);
+  const [query, setSearch] = useState("");
   const location = useLocation().pathname;
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -19,15 +22,25 @@ const Navbar = () => {
     navigate("/register");
   };
 
+  const handleSearch = (e) => {
+    dispatch(search(query));
+    navigate('/all-books')
+  };
+
   return (
     <>
       <div className="bg-white fixed md:relative top-0 left-0 w-full z-[9999999] md:px-20 py-5 px-6 items-center flex justify-between">
         <img className="h-[48px]" src={Logo} alt="" />
         <div className="border-2 w-[500px] hidden lg:flex rounded-3xl border-blue-500  h-[50px] justify-start">
           <input
-            className="bg-transparent outline-none w-[90%] mx-auto"
+            className="bg-transparent outline-none w-full px-4 mx-auto"
             type="text"
+            onChange={(e) => setSearch(e.target.value)}
           />
+          <div
+            onClick={handleSearch}
+            className="bg-blue-500 cursor-pointer w-16 rounded-e-3xl"
+          ></div>
         </div>
         {/* <div className="md:flex items-center hidden">
           <p
