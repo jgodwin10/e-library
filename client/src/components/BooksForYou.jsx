@@ -28,7 +28,6 @@ const BooksForYou = () => {
       "https://e-library-2kxw.onrender.com/get-files"
     );
     setAllImage(result.data.data);
-    console.log(allImage);
   };
 
   const showPdf = (pdf) => {
@@ -78,7 +77,6 @@ const BooksForYou = () => {
             </SwiperSlide>
           );
         })}
-      
       </Swiper>
     </div>
   );

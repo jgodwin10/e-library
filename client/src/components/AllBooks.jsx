@@ -14,6 +14,7 @@ const AllBooks = () => {
       "https://e-library-2kxw.onrender.com/get-files"
     );
     setAllImage(result.data.data);
+    
   };
 
   useEffect(() => {
@@ -38,20 +39,21 @@ const AllBooks = () => {
           })
       );
     }
-  }, [filter, item]);
+  }, [filter, allImage]);
 
-  if (item.length <= 0) {
-    return (
-      <div className="flex items-center justify-center max-w-[1440px] mx-auto md:px-8 px-4 h-[50vh]">
-        <p className="md:text-4xl font-semibold text-2xl">
-          Book can't be found
-        </p>
-      </div>
-    );
-  }
+
+   if (item.length <= 0) {
+     return (
+       <div className="flex items-center justify-center max-w-[1440px] mx-auto md:px-8 px-4 h-[50vh]">
+         <p className="md:text-4xl font-semibold text-2xl">
+           Book can't be found
+         </p>
+       </div>
+     );
+   }
 
   return (
-    <div className="max-w-[1440px] mx-auto mt-7 md:px-8 px-6">
+    <div className="max-w-[1440px] mx-auto mt-9 md:px-8 px-6">
       <h2 className="text-center md:text-2xl text-[20px] font-semibold py-5 ">
         All Available Books
       </h2>
@@ -60,6 +62,8 @@ const AllBooks = () => {
       </div>
     </div>
   );
+
+ 
 };
 
 export default AllBooks;

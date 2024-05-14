@@ -24,7 +24,8 @@ const Navbar = () => {
 
   const handleSearch = (e) => {
     dispatch(search(query));
-    navigate('/all-books')
+    navigate("/all-books");
+    setOpen(!open);
   };
 
   return (
@@ -234,6 +235,18 @@ const Navbar = () => {
             >
               Sign Up
             </p>
+          </div>
+          <div className="border-2 w-[80%] lg:hidden flex mt-8 rounded-3xl border-white  h-[50px] justify-start">
+            <input
+              className="bg-transparent placeholder:text-white outline-none w-full px-4 mx-auto"
+              type="text"
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Search for a BOOK here"
+            />
+            <div
+              onClick={handleSearch}
+              className="bg-white cursor-pointer w-16 rounded-e-3xl"
+            ></div>
           </div>
         </ul>
         <LiaTimesSolid
