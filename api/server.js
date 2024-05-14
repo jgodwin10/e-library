@@ -6,6 +6,7 @@ import router from "./src/Router/UserRoutes.js";
 import multer from "multer";
 import { Books } from "./src/config/db/BooksModel.js";
 import cors from "cors";
+import http from 'http'
 
 dotenv.config();
 
@@ -31,6 +32,8 @@ const storage = multer.diskStorage({
     cb(null, uniqueSuffix + file.originalname);
   },
 });
+
+const server = http.createServer(app)
 
 const upload = multer({ storage: storage });
 
@@ -73,6 +76,6 @@ app.use(router);
 
 app.use(UserMiddleware);
 
-app.listen(Port, () => {
+server.listen(Port, () => {
   console.log(`server started on Port: ${Port}`);
 });
