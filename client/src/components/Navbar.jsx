@@ -54,7 +54,7 @@ const Navbar = () => {
             />
 
             {/* STUDENTS */}
-            <div
+            {/* <div
               className={`bg-blue-500 absolute z-[9999999999] top-14 text-white py-4 px-5 flex flex-col gap-3 duration-1000 rounded-lg shadow-2xl right-0 ${
                 !acc ? "-translate-y-[50vh]" : "translate-y-0"
               } `}
@@ -80,11 +80,11 @@ const Navbar = () => {
               <p className="hover:text-black/80 duration-700 cursor-pointer">
                 Logout
               </p>
-            </div>
+            </div> */}
 
             {/* ADMIN */}
 
-            {/* <div
+            <div
               className={`bg-blue-500 absolute z-[9999999999] w-40 top-14 text-white py-4 px-5 flex flex-col gap-3 duration-1000 rounded-lg shadow-2xl right-0 ${
                 !acc ? "-translate-y-[50vh]" : "translate-y-0"
               } `}
@@ -135,7 +135,7 @@ const Navbar = () => {
               <p className="hover:text-black/80 duration-700 cursor-pointer">
                 Logout
               </p>
-            </div> */}
+            </div>
           </div>
           <div className="md:hidden">
             <LuMenu onClick={() => setOpen(!open)} className="size-8 " />
