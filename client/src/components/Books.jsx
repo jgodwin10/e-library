@@ -6,7 +6,7 @@ const Books = ({ pdf }) => {
     <div className="bg-white mb-10 border rounded-xl">
       <img
         className="md:h-[300px] h-[130px] object-cover w-full rounded-t-xl"
-        src={`https://e-library-server-mu.vercel.app/files/${pdf.image}`}
+        src={`https://e-library-2kxw.onrender.com/files/${pdf.image}`}
         alt=""
       />
       <div className="text-center  rounded-xl ">

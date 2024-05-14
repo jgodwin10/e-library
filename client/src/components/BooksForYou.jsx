@@ -16,7 +16,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 ).toString();
 
 const BooksForYou = () => {
-  const [allImage, setAllImage] = useState([]);
+  onst [allImage, setAllImage] = useState([]);
   const [pdfFile, setPdfFile] = useState(null);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const BooksForYou = () => {
 
   const getPdf = async () => {
     const result = await axios.get(
-      "https://e-library-server-mu.vercel.app/get-files"
+      "https://e-library-2kxw.onrender.com/get-files"
     );
     setAllImage(result.data.data);
     console.log(allImage);
@@ -33,7 +33,7 @@ const BooksForYou = () => {
 
   const showPdf = (pdf) => {
     // window.open(`http://localhost:5000/files/${pdf}`, "_blank", "noreferrer");
-    setPdfFile(`https://e-library-server-mu.vercel.app/files/${pdf}`);
+    setPdfFile(`https://e-library-2kxw.onrender.com/files/${pdf}`);
   };
 
   return (
