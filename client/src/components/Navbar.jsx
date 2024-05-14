@@ -54,51 +54,88 @@ const Navbar = () => {
             />
 
             {/* STUDENTS */}
-            {/* <div
+            <div
               className={`bg-blue-500 absolute z-[9999999999] top-14 text-white py-4 px-5 flex flex-col gap-3 duration-1000 rounded-lg shadow-2xl right-0 ${
                 !acc ? "-translate-y-[50vh]" : "translate-y-0"
               } `}
             >
-              <p className="hover:text-black/80 duration-700 cursor-pointer">
+              <p
+                onClick={() => {
+                  navigate("/profile");
+                  setAcc(!acc);
+                }}
+                className="hover:text-black/80 duration-700 cursor-pointer"
+              >
                 Profile
               </p>
-              <p className="hover:text-black/80 duration-700 cursor-pointer">
+              <p
+                onClick={() => {
+                  navigate("/collections");
+                  setAcc(!acc);
+                }}
+                className="hover:text-black/80 duration-700 cursor-pointer"
+              >
                 Collections
               </p>
               <p className="hover:text-black/80 duration-700 cursor-pointer">
                 Logout
               </p>
-            </div> */}
+            </div>
 
             {/* ADMIN */}
 
-            <div
+            {/* <div
               className={`bg-blue-500 absolute z-[9999999999] w-40 top-14 text-white py-4 px-5 flex flex-col gap-3 duration-1000 rounded-lg shadow-2xl right-0 ${
                 !acc ? "-translate-y-[50vh]" : "translate-y-0"
               } `}
             >
-              <p className="hover:text-black/80 duration-700 cursor-pointer">
+              <p
+                onClick={() => {
+                  navigate("/profile");
+                  setAcc(!acc);
+                }}
+                className="hover:text-black/80 duration-700 cursor-pointer"
+              >
                 Profile
               </p>
-              <p className="hover:text-black/80 duration-700 cursor-pointer">
+              <p
+                onClick={() => {
+                  navigate("/all-students");
+                  setAcc(!acc);
+                }}
+                className="hover:text-black/80 duration-700 cursor-pointer"
+              >
                 All Students
               </p>
               <Link
                 to={"/upload"}
+                onClick={() => setAcc(!acc)}
                 className="hover:text-black/80 duration-700 cursor-pointer"
               >
                 Upload Books
               </Link>
-              <p className="hover:text-black/80 duration-700 cursor-pointer">
+              <p
+                onClick={() => {
+                  navigate("/borrowed-books");
+                  setAcc(!acc);
+                }}
+                className="hover:text-black/80 duration-700 cursor-pointer"
+              >
                 Borrowed Books
               </p>
-              <p className="hover:text-black/80 duration-700 cursor-pointer">
+              <p
+                onClick={() => {
+                  navigate("/refunded-books");
+                  setAcc(!acc);
+                }}
+                className="hover:text-black/80 duration-700 cursor-pointer"
+              >
                 Refunded Books
               </p>
               <p className="hover:text-black/80 duration-700 cursor-pointer">
                 Logout
               </p>
-            </div>
+            </div> */}
           </div>
           <div className="md:hidden">
             <LuMenu onClick={() => setOpen(!open)} className="size-8 " />

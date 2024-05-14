@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from 'react'
 import Book from "../images/Books.jpg";
 
-const Books = ({ pdf }) => {
+const BorrowBook = () => {
   return (
     <div className="bg-white mb-10 border rounded-xl">
       <img
@@ -18,37 +18,14 @@ const Books = ({ pdf }) => {
         {/* <p>{pdf.author}</p> */}
         <p className="md:text-base text-[12px]">Sewwh</p>
         <button className="mt-4 border-2 font-semibold text-blue-500 hover:bg-blue-500 hover:text-white duration-1000 border-blue-500 w-full md:py-3 md:text-base text-[12px] py-2">
-          Borrow Now
+          Refund Book
         </button>
         <button className="border-2  rounded-b-xl font-semibold text-blue-500 hover:bg-blue-500 hover:text-white duration-1000 border-blue-500 w-full md:py-3 md:text-base text-[12px] py-2">
           View Now
         </button>
       </div>
-      {/* PDF */}
-
-      {/* <div className="uploaded">
-        <h4>Uploaded PDF:</h4>
-        <div className="output-div">
-          {allImage == null
-            ? ""
-            : allImage.map((data) => {
-                return (
-                  <div className="inner-div">
-                    <h6>Title: {data.title}</h6>
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => showPdf(data.pdf)}
-                    >
-                      Show Pdf
-                    </button>
-                  </div>
-                );
-              })}
-        </div>
-      </div>
-      <PdfComp pdfFile={pdfFile} /> */}
     </div>
   );
-};
+}
 
-export default Books;
+export default BorrowBook

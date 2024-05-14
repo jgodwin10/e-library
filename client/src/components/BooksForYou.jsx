@@ -70,14 +70,32 @@ const BooksForYou = () => {
         modules={[Pagination, Autoplay]}
         className="mySwiper max-w-[1440px] mx-auto"
       >
-        {allImage.map((item, index) => {
+        {/* {allImage.map((item, index) => {
           return (
             <SwiperSlide key={index}>
               {" "}
               <Books key={index} pdf={item} />
             </SwiperSlide>
           );
-        })}
+        })} */}
+        <SwiperSlide>
+          <Books />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Books />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Books />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Books />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Books />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Books />
+        </SwiperSlide>
       </Swiper>
     </div>
   );
