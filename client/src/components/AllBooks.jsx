@@ -8,13 +8,16 @@ const AllBooks = () => {
   const [pdfFile, setPdfFile] = useState(null);
   const [item, setItem] = useState([]);
   const filter = useSelector((state) => state.Util.filter);
+  const keyword = useSelector((state) => state.Util.keyword);
+  
+  
+
 
   const getPdf = async () => {
     const result = await axios.get(
       "https://e-library-2kxw.onrender.com/get-files"
     );
     setAllImage(result.data.data);
-    
   };
 
   useEffect(() => {
@@ -22,7 +25,7 @@ const AllBooks = () => {
   }, []);
 
   useEffect(() => {
-    if (filter == "") {
+    if (filter == "" || keyword == "") {
       setItem(
         allImage.map((item, index) => {
           return <Books key={index} pdf={item} />;
@@ -30,27 +33,55 @@ const AllBooks = () => {
       );
     }
 
-    if (filter) {
+    if (filter && keyword == "title") {
       setItem(
         allImage
-          .filter((item) => item.title.toLowerCase().includes(filter.toLowerCase()))
+          .filter((item) =>
+            item.title.toLowerCase().includes(filter.toLowerCase())
+          )
           .map((item, index) => {
             return <Books key={index} pdf={item} />;
           })
       );
     }
+
+    if (filter && keyword == "category") {
+      setItem(
+        allImage
+          .filter((item) =>
+            item.category.toLowerCase().includes(filter.toLowerCase())
+          )
+          .map((item, index) => {
+            return <Books key={index} pdf={item} />;
+          })
+      );
+    }
+
+    if (filter && keyword == "author") {
+      setItem(
+        allImage
+          .filter((item) =>
+            item.author.toLowerCase().includes(filter.toLowerCase())
+          )
+          .map((item, index) => {
+            return <Books key={index} pdf={item} />;
+          })
+      );
+    }
+
+
+
   }, [filter, allImage]);
 
-
-   if (item.length <= 0) {
-     return (
-       <div className="flex items-center justify-center max-w-[1440px] mx-auto md:px-8 px-4 h-[50vh]">
-         <p className="md:text-4xl font-semibold text-2xl">
-           Book can't be found
-         </p>
-       </div>
-     );
-   }
+  if (item.length <= 0) {
+    return (
+      <div className="flex items-center justify-center max-w-[1440px] mx-auto md:px-8 px-4 h-[50vh]">
+        <p className="md:text-4xl font-semibold text-2xl">
+          Book can't be found
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-[1440px] mx-auto mt-9 md:px-8 px-6">
@@ -62,8 +93,6 @@ const AllBooks = () => {
       </div>
     </div>
   );
-
- 
 };
 
 export default AllBooks;

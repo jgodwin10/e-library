@@ -37,6 +37,18 @@ const DepartmentView = () => {
     }
   }, [allImage]);
 
+  if (allImage.length <= 0) {
+    return (
+      <div className="flex items-center justify-center max-w-[1440px] mx-auto md:px-8 px-4 h-[50vh]">
+        <p className="md:text-4xl font-semibold text-2xl">
+          Book can't be found
+        </p>
+      </div>
+    );
+  }
+
+
+
   return (
     <div className=" max-w-[1440px] mx-auto md:px-8 px-6">
       <h1 className="text-center md:text-3xl text-[22px] pb-8 -mb-10 pt-8 font-semibold">

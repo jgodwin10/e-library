@@ -4,13 +4,15 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { LuMenu } from "react-icons/lu";
 import { LiaTimesSolid } from "react-icons/lia";
 import Avatar from "../images/avatar.png";
-import { search } from "../redux/Util";
+import { search, word } from "../redux/Util";
 import { useDispatch } from "react-redux";
+import { FaSearch } from "react-icons/fa";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [acc, setAcc] = useState(false);
   const [query, setSearch] = useState("");
+  const [keyword, setKeyword] = useState("");
   const location = useLocation().pathname;
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -24,6 +26,7 @@ const Navbar = () => {
 
   const handleSearch = (e) => {
     dispatch(search(query));
+    dispatch(word(keyword));
     navigate("/all-books");
     setOpen(!open);
   };
@@ -33,15 +36,31 @@ const Navbar = () => {
       <div className="bg-white fixed md:relative top-0 left-0 w-full z-[9999999] md:px-20 py-5 px-6 items-center flex justify-between">
         <img className="h-[48px]" src={Logo} alt="" />
         <div className="border-2 w-[500px] hidden lg:flex rounded-3xl border-blue-500  h-[50px] justify-start">
+          <div className="bg-blue-500 rounded-s-3xl  px-2 flex items-center justify-center">
+            <select
+              className="outline-none text-white bg-blue-500"
+              name="keyword"
+              id="keyword"
+              onChange={(e) => setKeyword(e.target.value)}
+            >
+              <option value="">Search By</option>
+              <option value="title">Book Title</option>
+              <option value="author">Book Author</option>
+              <option value="category">Departments</option>
+            </select>
+          </div>
           <input
-            className="bg-transparent outline-none w-full px-4 mx-auto"
+            className="bg-transparent outline-none placeholder:text-blue-500 w-full px-4 mx-auto"
             type="text"
             onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search for a BOOK here"
           />
           <div
             onClick={handleSearch}
-            className="bg-blue-500 cursor-pointer w-16 rounded-e-3xl"
-          ></div>
+            className="bg-blue-500 cursor-pointer w-16 flex justify-center items-center text-white rounded-e-3xl"
+          >
+            <FaSearch className="size-5" />
+          </div>
         </div>
         {/* <div className="md:flex items-center hidden">
           <p
@@ -236,17 +255,32 @@ const Navbar = () => {
               Sign Up
             </p>
           </div>
-          <div className="border-2 w-[80%] lg:hidden flex mt-8 rounded-3xl border-white  h-[50px] justify-start">
+          <div className="border-2 w-[90%] lg:hidden flex mt-8 rounded-3xl border-white  h-[50px] justify-start">
+            <div className="bg-white rounded-s-3xl  px-1 flex items-center justify-center">
+              <select
+                className="outline-none text-[13px] w-[90px] text-blue-500 bg-white"
+                name="keyword"
+                id="keyword"
+                onChange={(e) => setKeyword(e.target.value)}
+              >
+                <option value="">Search By</option>
+                <option value="title">Book Title</option>
+                <option value="author">Book Author</option>
+                <option value="category">Departments</option>
+              </select>
+            </div>
             <input
-              className="bg-transparent placeholder:text-white outline-none w-full px-4 mx-auto"
+              className="bg-transparent placeholder:text-white outline-none w-full px-2 mx-auto"
               type="text"
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search for a BOOK here"
             />
             <div
               onClick={handleSearch}
-              className="bg-white cursor-pointer w-16 rounded-e-3xl"
-            ></div>
+              className="bg-white cursor-pointer w-20 flex justify-center items-center text-blue-500 rounded-e-3xl"
+            >
+              <FaSearch className="size-5" />
+            </div>
           </div>
         </ul>
         <LiaTimesSolid

@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   filter: "",
+  keyword: ''
 };
 
 const utilSlice = createSlice({
@@ -11,8 +12,11 @@ const utilSlice = createSlice({
     search(state, action) {
       state.filter = action.payload;
     },
+    word(state, action) {
+      state.keyword = action.payload;
+    },
   },
 });
 
-export const { search } = utilSlice.actions;
+export const { search, word } = utilSlice.actions;
 export default utilSlice.reducer;
