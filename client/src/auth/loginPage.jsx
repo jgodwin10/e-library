@@ -12,6 +12,7 @@ export default function LoginPage() {
     password: "",
   });
   const [errors, setErrors] = useState({});
+  const [error, setError] = useState("");
   const [login] = useLoginMutation();
 
   const handleChange = (e) => {
@@ -32,13 +33,12 @@ export default function LoginPage() {
     if (Object.keys(validationErrors).length === 0) {
       try {
         const res = await login(formData).unwrap();
-          dispatch(setCredentials(res));
-          navigate('/')
-          setFormData({ matric: "", password: "" });
-      } catch (err) {}
-
-      console.log("Form submitted:", formData);
-      // Reset form data
+        dispatch(setCredentials(res));
+        navigate("/");
+        setFormData({ matric: "", password: "" });
+      } catch (err) {
+        setErrors(err.message);
+      }
     }
   };
 
@@ -79,6 +79,11 @@ export default function LoginPage() {
             </div>
 
             <div className="mt-10">
+              {error && (
+                <p className="bg-red-500 py-3 rounded-md px-4 text-white text-xs mt-1">
+                  {error}
+                </p>
+              )}
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label

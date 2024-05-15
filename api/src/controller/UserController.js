@@ -53,7 +53,7 @@ export const login = asyncHandler(async (req, res, next) => {
   const { matric, password } = req.body;
 
   try {
-    const valid = await User.findOne({ matric });
+    const valid = await User.find({ matric });
     const validPassword = bcrypt.compareSync(password, valid.password);
 
     if (valid && validPassword) {
