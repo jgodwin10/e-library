@@ -1,12 +1,18 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useLoginMutation } from "../redux/ApiSlice";
+import { useDispatch } from "react-redux";
+import { setCredentials } from "../redux/Util";
 
 export default function LoginPage() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     matric: "",
     password: "",
   });
   const [errors, setErrors] = useState({});
+  const [login] = useLoginMutation();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,16 +24,21 @@ export default function LoginPage() {
     setErrors(validationErrors);
   }, [formData]);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Perform client-side validation
     const validationErrors = validateFormData(formData);
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length === 0) {
-      // Proceed with login process (e.g., send data to backend)
+      try {
+        const res = await login(formData).unwrap();
+          dispatch(setCredentials(res));
+          navigate('/')
+          setFormData({ matric: "", password: "" });
+      } catch (err) {}
+
       console.log("Form submitted:", formData);
       // Reset form data
-      setFormData({ matric: "", password: "" });
     }
   };
 

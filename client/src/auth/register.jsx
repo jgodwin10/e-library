@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom"; // Import Link from react-router-dom
+import { Link, useNavigate } from "react-router-dom";
+import { useRegisterMutation } from "../redux/ApiSlice";
+import { setCredentials } from "../redux/Util";
+import { useDispatch } from "react-redux";
 
 export default function Register() {
   const [formData, setFormData] = useState({
@@ -8,7 +11,13 @@ export default function Register() {
     firstname: "",
     lastname: "",
     department: "",
+    isAdmin: false,
   });
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const [register] = useRegisterMutation();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -18,10 +27,27 @@ export default function Register() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    try {
+      const res = await register(formData).unwrap();
+
+      dispatch(setCredentials(res));
+
+      navigate("/");
+      setFormData({
+        matric: "",
+        password: "",
+        firstname: "",
+        lastname: "",
+        department: "",
+      });
+    } catch (err) {
+      console.log(err);
+    }
+
     // Add logic here to handle form submission (e.g., send data to server)
-    console.log(formData);
   };
 
   return (
@@ -36,7 +62,7 @@ export default function Register() {
                 alt="Your Company"
               />
               <h2 className="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
-                Sign Up
+                Create an Account
               </h2>
               <p className="mt-2 text-sm leading-6 text-gray-500">
                 Already a member? {/* Change 'a member?' to 'Not a member?' */}
@@ -51,28 +77,65 @@ export default function Register() {
 
             <div className="mt-10">
               <div>
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-4">
                   {" "}
                   {/* Add onSubmit event handler */}
                   <div>
-                    <label
-                      htmlFor="email"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Email address
-                    </label>
-                    <div className="mt-2">
+                    <label htmlFor="">
+                      <span className="block text-sm font-medium leading-6 text-gray-900">
+                        First Name
+                      </span>
                       <input
-                        id="email"
-                        name="email"
-                        type="email"
-                        autoComplete="email"
-                        value={formData.email}
+                        className="block w-full px-3 rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        type="text"
+                        name="firstname"
+                        value={formData.firstname}
+                        onChange={handleChange}
+                      />
+                    </label>
+                  </div>
+                  <div>
+                    <label htmlFor="">
+                      <span className="block text-sm font-medium leading-6 text-gray-900">
+                        Last Name
+                      </span>
+                      <input
+                        className="block w-full px-3 rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        type="text"
+                        name="lastname"
+                        value={formData.lastname}
+                        onChange={handleChange}
+                      />
+                    </label>
+                  </div>
+                  <div>
+                    <label htmlFor="">
+                      <span className="block text-sm font-medium leading-6 text-gray-900">
+                        Matric Number
+                      </span>
+                      <input
+                        className="block w-full px-3 rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        type="text"
+                        name="matric"
+                        value={formData.matric}
                         onChange={handleChange}
                         required
-                        className="block w-full px-3 rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
-                    </div>
+                    </label>
+                  </div>
+                  <div>
+                    <label htmlFor="">
+                      <span className="block text-sm font-medium leading-6 text-gray-900">
+                        Department
+                      </span>
+                      <input
+                        className="block w-full px-3 rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        type="text"
+                        name="department"
+                        value={formData.department}
+                        onChange={handleChange}
+                      />
+                    </label>
                   </div>
                   <div>
                     <label

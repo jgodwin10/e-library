@@ -1,9 +1,14 @@
 import mongoose from "mongoose";
 
-const {Schema, model} = mongoose
+const { Schema, model } = mongoose;
 
 const UserSchema = new Schema({
-  username: {
+  department: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  isAdmin: {
     type: String,
     required: true,
     unique: true,
@@ -29,4 +34,4 @@ const UserSchema = new Schema({
   },
 });
 
-export const User = model('user', UserSchema)
+export const User = model("user", UserSchema);

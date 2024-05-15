@@ -1,18 +1,24 @@
 import jwt from "jsonwebtoken";
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
 export const generateToken = (user) => {
-  const { username, _id, matric } = user;
+  const { department, isAdmin, lastname, firstname, matric, _id } = user;
 
-   return jwt.sign({ _id, username, matric }, process.env.SECRET, {
-    expiresIn: "1d",
-  });
-  
+  return jwt.sign(
+    { department, isAdmin, lastname, firstname, matric, _id },
+    process.env.SECRET,
+    {
+      expiresIn: "1d",
+    }
+  );
 };
 
 export const verifyToken = (token) => {
-  const {username, matric} = jwt.verify(token, process.env.SECRET)
-  return { username, matric }
-}
+  const { department, isAdmin, lastname, firstname, matric, _id } = jwt.verify(
+    token,
+    process.env.SECRET
+  );
+  return { department, isAdmin, lastname, firstname, matric, _id };
+};

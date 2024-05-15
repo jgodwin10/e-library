@@ -7,11 +7,13 @@ import Avatar from "../images/avatar.png";
 import { search, word } from "../redux/Util";
 import { useDispatch } from "react-redux";
 import { FaSearch } from "react-icons/fa";
+import { logout } from "../redux/Util";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [acc, setAcc] = useState(false);
-  const [user, setUser] = useState(false)
+  const user = JSON.parse(localStorage.getItem("token"));
+  const details = JSON.parse(localStorage.getItem("details"));
   const [query, setSearch] = useState("");
   const [keyword, setKeyword] = useState("");
   const location = useLocation().pathname;
@@ -32,11 +34,17 @@ const Navbar = () => {
     setOpen(!open);
   };
 
+  const handleLogout = () => {
+    navigate("/");
+    window.location.reload(true);
+    dispatch(logout());
+  };
+
   return (
     <>
       <div className="bg-white fixed md:relative top-0 left-0 w-full z-[9999999] md:px-20 py-5 px-6 items-center flex justify-between">
         <img className="h-[48px]" src={Logo} alt="" />
-        <div className="border-2 w-[500px] hidden lg:flex rounded-3xl border-blue-500  h-[50px] justify-start">
+        <div className="border-2 w-[500px] hidden md:flex rounded-3xl border-blue-500  h-[50px] justify-start">
           <div className="bg-blue-500 rounded-s-3xl  px-2 flex items-center justify-center">
             <select
               className="outline-none text-white bg-blue-500"
@@ -63,20 +71,22 @@ const Navbar = () => {
             <FaSearch className="size-5" />
           </div>
         </div>
-        <div className="md:flex items-center hidden">
-          <p
-            onClick={handleLogin}
-            className="font-semibold cursor-pointer  text-white bg-blue-500 py-2 text-center md:text-base text-[14px] w-[70px] md:w-[100px] rounded-3xl mr-2 md:mr-5"
-          >
-            Login
-          </p>
-          <p
-            onClick={handleSignup}
-            className="font-semibold cursor-pointer text-white bg-blue-500 py-2 text-center md:text-base text-[14px] w-[70px] md:w-[100px] rounded-3xl"
-          >
-            Sign Up
-          </p>
-        </div>
+        {!user && (
+          <div className="md:flex items-center hidden">
+            <p
+              onClick={handleLogin}
+              className="font-semibold cursor-pointer  text-white bg-blue-500 py-2 text-center md:text-base text-[14px] w-[70px] md:w-[100px] rounded-3xl mr-2 md:mr-5"
+            >
+              Login
+            </p>
+            <p
+              onClick={handleSignup}
+              className="font-semibold cursor-pointer text-white bg-blue-500 py-2 text-center md:text-base text-[14px] w-[70px] md:w-[100px] rounded-3xl"
+            >
+              Sign Up
+            </p>
+          </div>
+        )}
 
         {user && (
           <div className="flex gap-x-4 items-center">
@@ -89,88 +99,98 @@ const Navbar = () => {
               />
 
               {/* STUDENTS */}
-              <div
-                className={`bg-blue-500 absolute z-[9999999999] top-14 text-white py-4 px-5 flex flex-col gap-3 duration-1000 rounded-lg shadow-2xl right-0 ${
-                  !acc ? "-translate-y-[50vh]" : "translate-y-0"
-                } `}
-              >
-                <p
-                  onClick={() => {
-                    navigate("/profile");
-                    setAcc(!acc);
-                  }}
-                  className="hover:text-black/80 duration-700 cursor-pointer"
+              {details.isAdmin == "false" && (
+                <div
+                  className={`bg-blue-500 absolute z-[9999999999] top-14 text-white py-4 px-5 flex flex-col gap-3 duration-1000 rounded-lg shadow-2xl right-0 ${
+                    !acc ? "-translate-y-[50vh]" : "translate-y-0"
+                  } `}
                 >
-                  Profile
-                </p>
-                <p
-                  onClick={() => {
-                    navigate("/collections");
-                    setAcc(!acc);
-                  }}
-                  className="hover:text-black/80 duration-700 cursor-pointer"
-                >
-                  Collections
-                </p>
-                <p className="hover:text-black/80 duration-700 cursor-pointer">
-                  Logout
-                </p>
-              </div>
+                  <p
+                    onClick={() => {
+                      navigate("/profile");
+                      setAcc(!acc);
+                    }}
+                    className="hover:text-black/80 duration-700 cursor-pointer"
+                  >
+                    Profile
+                  </p>
+                  <p
+                    onClick={() => {
+                      navigate("/collections");
+                      setAcc(!acc);
+                    }}
+                    className="hover:text-black/80 duration-700 cursor-pointer"
+                  >
+                    Collections
+                  </p>
+                  <p
+                    onClick={handleLogout}
+                    className="hover:text-black/80 duration-700 cursor-pointer"
+                  >
+                    Logout
+                  </p>
+                </div>
+              )}
 
               {/* ADMIN */}
 
-              <div
-                className={`bg-blue-500 absolute z-[9999999999] w-40 top-14 text-white py-4 px-5 flex flex-col gap-3 duration-1000 rounded-lg shadow-2xl right-0 ${
-                  !acc ? "-translate-y-[50vh]" : "translate-y-0"
-                } `}
-              >
-                <p
-                  onClick={() => {
-                    navigate("/profile");
-                    setAcc(!acc);
-                  }}
-                  className="hover:text-black/80 duration-700 cursor-pointer"
+              {details.isAdmin == "true" && (
+                <div
+                  className={`bg-blue-500 absolute z-[9999999999] w-40 top-14 text-white py-4 px-5 flex flex-col gap-3 duration-1000 rounded-lg shadow-2xl right-0 ${
+                    !acc ? "-translate-y-[50vh]" : "translate-y-0"
+                  } `}
                 >
-                  Profile
-                </p>
-                <p
-                  onClick={() => {
-                    navigate("/all-students");
-                    setAcc(!acc);
-                  }}
-                  className="hover:text-black/80 duration-700 cursor-pointer"
-                >
-                  All Students
-                </p>
-                <Link
-                  to={"/upload"}
-                  onClick={() => setAcc(!acc)}
-                  className="hover:text-black/80 duration-700 cursor-pointer"
-                >
-                  Upload Books
-                </Link>
-                <p
-                  onClick={() => {
-                    navigate("/borrowed-books");
-                    setAcc(!acc);
-                  }}
-                  className="hover:text-black/80 duration-700 cursor-pointer"
-                >
-                  Borrowed Books
-                </p>
-                <p
-                  onClick={() => {
-                    navigate("/refunded-books");
-                    setAcc(!acc);
-                  }}
-                  className="hover:text-black/80 duration-700 cursor-pointer"
-                >
-                  Refunded Books
-                </p>
-                <p className="hover:text-black/80 duration-700 cursor-pointer">
-                  Logout
-                </p>
-              </div>
+                  <p
+                    onClick={() => {
+                      navigate("/profile");
+                      setAcc(!acc);
+                    }}
+                    className="hover:text-black/80 duration-700 cursor-pointer"
+                  >
+                    Profile
+                  </p>
+                  <p
+                    onClick={() => {
+                      navigate("/all-students");
+                      setAcc(!acc);
+                    }}
+                    className="hover:text-black/80 duration-700 cursor-pointer"
+                  >
+                    All Students
+                  </p>
+                  <Link
+                    to={"/upload"}
+                    onClick={() => setAcc(!acc)}
+                    className="hover:text-black/80 duration-700 cursor-pointer"
+                  >
+                    Upload Books
+                  </Link>
+                  <p
+                    onClick={() => {
+                      navigate("/borrowed-books");
+                      setAcc(!acc);
+                    }}
+                    className="hover:text-black/80 duration-700 cursor-pointer"
+                  >
+                    Borrowed Books
+                  </p>
+                  <p
+                    onClick={() => {
+                      navigate("/refunded-books");
+                      setAcc(!acc);
+                    }}
+                    className="hover:text-black/80 duration-700 cursor-pointer"
+                  >
+                    Refunded Books
+                  </p>
+                  <p
+                    onClick={handleLogout}
+                    className="hover:text-black/80 duration-700 cursor-pointer"
+                  >
+                    Logout
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         )}
@@ -239,27 +259,29 @@ const Navbar = () => {
           >
             Contact
           </Link>
-          <div className="flex items-center pt-8 md:hidden">
-            <p
-              onClick={() => {
-                setOpen(!open);
-                handleLogin();
-              }}
-              className="font-semibold cursor-pointer  text-blue-500 bg-white hover:bg-white/70 duration-500 py-2 text-center md:text-base text-[14px] w-[100px] rounded-3xl mr-2 md:mr-5"
-            >
-              Login
-            </p>
-            <p
-              onClick={() => {
-                setOpen(!open);
-                handleSignup();
-              }}
-              className="font-semibold cursor-pointer text-blue-500 bg-white py-2 hover:bg-white/70 duration-500 text-center md:text-base text-[14px] w-[100px] rounded-3xl"
-            >
-              Sign Up
-            </p>
-          </div>
-          <div className="border-2 w-[90%] lg:hidden flex mt-8 rounded-3xl border-white  h-[50px] justify-start">
+          {!user && (
+            <div className="flex items-center pt-8 md:hidden">
+              <p
+                onClick={() => {
+                  setOpen(!open);
+                  handleLogin();
+                }}
+                className="font-semibold cursor-pointer  text-blue-500 bg-white hover:bg-white/70 duration-500 py-2 text-center md:text-base text-[14px] w-[100px] rounded-3xl mr-2 md:mr-5"
+              >
+                Login
+              </p>
+              <p
+                onClick={() => {
+                  setOpen(!open);
+                  handleSignup();
+                }}
+                className="font-semibold cursor-pointer text-blue-500 bg-white py-2 hover:bg-white/70 duration-500 text-center md:text-base text-[14px] w-[100px] rounded-3xl"
+              >
+                Sign Up
+              </p>
+            </div>
+          )}
+          <div className="border-2 w-[90%] md:hidden flex mt-8 rounded-3xl border-white  h-[50px] justify-start">
             <div className="bg-white rounded-s-3xl  px-1 flex items-center justify-center">
               <select
                 className="outline-none text-[13px] w-[90px] text-blue-500 bg-white"

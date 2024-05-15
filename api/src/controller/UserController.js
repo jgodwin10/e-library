@@ -12,24 +12,16 @@ const salt = bcrypt.genSaltSync(10);
 //REGISTER ROUTE
 
 export const register = asyncHandler(async (req, res, next) => {
-  const { username, lastname, firstname, matric, email, password } = req.body;
+  const { department, isAdmin, lastname, firstname, matric, password } =
+    req.body;
 
-  if (!email || !username || !password || !lastname || !firstname || !matric) {
+  console.log({ department, isAdmin, lastname, firstname, matric, password });
+
+  if (!department || !password || !lastname || !firstname || !matric) {
     return next(errorHandler(400, "Invalid Input, All Field are required"));
   }
 
-  console.log({ username, lastname, firstname, matric, email, password });
-
-  const exist = await User.findOne({ email });
-  const existUsername = await User.findOne({ username });
   const existmatric = await User.findOne({ matric });
-
-  if (exist) {
-    return next(errorHandler(400, "User existed, Try another Input"));
-  }
-  if (existUsername) {
-    return next(errorHandler(400, "User existed, Try another Input"));
-  }
 
   if (existmatric) {
     return next(errorHandler(400, "User existed, Try another Input"));
@@ -37,7 +29,14 @@ export const register = asyncHandler(async (req, res, next) => {
 
   const hashedPassword = bcrypt.hashSync(password, salt);
 
-  const user = await User.create({ email, lastname, firstname, matric, username, password: hashedPassword });
+  const user = await User.create({
+    department,
+    lastname,
+    firstname,
+    matric,
+    isAdmin,
+    password: hashedPassword,
+  });
 
   if (user) {
     const token = generateToken(user);
@@ -51,7 +50,7 @@ export const register = asyncHandler(async (req, res, next) => {
 //LOGIN ROUTE
 
 export const login = asyncHandler(async (req, res, next) => {
-  const {  matric, password } = req.body;
+  const { matric, password } = req.body;
 
   try {
     const valid = await User.findOne({ matric });
