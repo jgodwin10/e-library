@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const ApiSlice = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: "https://e-library-2kxw.onrender.com/",
+    baseUrl: "http://localhost:3000/",
   }),
   tagTypes: ["Post"],
   endpoints: (build) => ({

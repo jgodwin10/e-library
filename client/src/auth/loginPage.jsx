@@ -29,6 +29,8 @@ export default function LoginPage() {
     e.preventDefault();
     // Perform client-side validation
     const validationErrors = validateFormData(formData);
+
+    console.log(formData);
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length === 0) {
       try {
@@ -37,7 +39,7 @@ export default function LoginPage() {
         navigate("/");
         setFormData({ matric: "", password: "" });
       } catch (err) {
-        setErrors(err.message);
+        setError(err.data.message);
       }
     }
   };
@@ -80,7 +82,7 @@ export default function LoginPage() {
 
             <div className="mt-10">
               {error && (
-                <p className="bg-red-500 py-3 rounded-md px-4 text-white text-xs mt-1">
+                <p className="bg-red-400 py-3 mb-2 rounded-md px-4 text-white text-xs mt-1">
                   {error}
                 </p>
               )}
