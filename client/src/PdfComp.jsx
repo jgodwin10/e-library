@@ -10,12 +10,12 @@ function PdfComp(props) {
   }
 
   return (
-    <div className="bg-[#dedede] w-[100%] p-[50px]">
+    <div className="bg-[#dedede] w-[100%] pdf-div p-[50px]">
       <p>
         Page {pageNumber} of {numPages}
       </p>
       <Document
-        className={`w-full`}
+      
         file={props.pdfFile}
         onLoadSuccess={onDocumentLoadSuccess}
       >

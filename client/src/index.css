@@ -12,3 +12,9 @@ table td {
 table td {
   text-align: center;
 }
+
+.pdf-div {
+    margin: 0 auto;
+    width: 80% !important;
+    height: 100% !important;
+}
