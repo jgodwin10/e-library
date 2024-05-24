@@ -1,7 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Book from "../images/Books.jpg";
 
+import PdfComp from "../PdfComp";
+import ReadPdf from "../pages/ReadPdf";
+import { useNavigate } from "react-router-dom";
+
 const Books = ({ pdf }) => {
+  const navigate = useNavigate();
+
+  const readNow = () => {
+    navigate(`/pdf/${pdf.title}`)
+  }
+
   return (
     <div className="bg-white mb-10 border rounded-xl">
       <img
@@ -17,33 +27,29 @@ const Books = ({ pdf }) => {
         <button className="mt-4 border-2 font-semibold text-blue-500 hover:bg-blue-500 hover:text-white duration-1000 border-blue-500 w-full md:py-3 md:text-base text-[12px] py-2">
           Borrow Now
         </button>
-        <button className="border-2  rounded-b-xl font-semibold text-blue-500 hover:bg-blue-500 hover:text-white duration-1000 border-blue-500 w-full md:py-3 md:text-base text-[12px] py-2">
+        <button onClick={readNow} className="border-2  rounded-b-xl font-semibold text-blue-500 hover:bg-blue-500 hover:text-white duration-1000 border-blue-500 w-full md:py-3 md:text-base text-[12px] py-2">
           View Now
         </button>
       </div>
       {/* PDF */}
-
       {/* <div className="uploaded">
         <h4>Uploaded PDF:</h4>
         <div className="output-div">
-          {allImage == null
-            ? ""
-            : allImage.map((data) => {
-                return (
-                  <div className="inner-div">
-                    <h6>Title: {data.title}</h6>
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => showPdf(data.pdf)}
-                    >
-                      Show Pdf
-                    </button>
-                  </div>
-                );
-              })}
+          {pdf == null ? (
+            ""
+          ) : (
+            <div className="inner-div">
+              <h6>Title: {pdf.title}</h6>
+              <button className="btn btn-primary" onClick={() => showPdf(pdf)}>
+                Show Pdf
+              </button>
+            </div>
+          )}
         </div>
-      </div>
-      <PdfComp pdfFile={pdfFile} /> */}
+      </div> */}
+     
+
+      {/* <PdfComp pdfFile={pdfFile} /> */}
     </div>
   );
 };

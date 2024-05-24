@@ -16,13 +16,14 @@ import BorrowedBooks from "./Admin/BorrowedBooks";
 import RefundBooks from "./Admin/RefundBooks";
 import Collections from "./Admin/Collections";
 import Hello from "./pages/hello";
+import ReadPdf from "./pages/ReadPdf";
 
 const App = () => {
   return (
     <div>
       <BrowserRouter>
         <Routes>
-            <Route path="/hello" element={<Hello />} />
+          <Route path="/hello" element={<Hello />} />
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/login" element={<LoginPage />} />
@@ -38,6 +39,7 @@ const App = () => {
             <Route path="/departments" element={<Department />} />
             <Route path="/all-books" element={<AllBooks />} />
             <Route path="/:name" element={<DepartmentView />} />
+            <Route path="/pdf/:title" element={<ReadPdf />} />
           </Route>
         </Routes>
       </BrowserRouter>

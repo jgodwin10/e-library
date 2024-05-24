@@ -21,7 +21,14 @@ export const ApiSlice = createApi({
         body,
       }),
     }),
+
+    getFiles: build.query({
+      query: () => ({
+        url: 'get-files',
+        method: "GET"
+      })
+    })
   }),
 });
 
-export const { useRegisterMutation, useLoginMutation } = ApiSlice;
+export const { useRegisterMutation, useLoginMutation, useGetFilesQuery } = ApiSlice;

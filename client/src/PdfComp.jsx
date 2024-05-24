@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Document, Page } from "react-pdf";
 
-
 function PdfComp(props) {
   const [numPages, setNumPages] = useState();
   const [pageNumber, setPageNumber] = useState(1);
@@ -11,11 +10,15 @@ function PdfComp(props) {
   }
 
   return (
-    <div className="pdf-div">
+    <div className="bg-[#dedede] w-[100%] p-[50px]">
       <p>
         Page {pageNumber} of {numPages}
       </p>
-      <Document file={props.pdfFile} onLoadSuccess={onDocumentLoadSuccess}>
+      <Document
+        className={`w-full`}
+        file={props.pdfFile}
+        onLoadSuccess={onDocumentLoadSuccess}
+      >
         {Array.apply(null, Array(numPages))
           .map((x, i) => i + 1)
           .map((page) => {
