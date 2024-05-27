@@ -1,21 +1,15 @@
-import React, { useEffect, useState } from "react";
-import PdfComp from "../PdfComp";
-import { pdfjs } from "react-pdf";
-import axios from "axios";
+import * as React from "react";
+import { Viewer } from "@react-pdf-viewer/core";
+import "@react-pdf-viewer/core/lib/styles/index.css";
 import { useParams } from "react-router-dom";
 import { useGetFilesQuery } from "../redux/ApiSlice";
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  "pdfjs-dist/build/pdf.worker.min.js",
-  import.meta.url
-).toString();
-
 const ReadPdf = () => {
-  const [pdfFile, setPdfFile] = useState(null);
-
-  const { title } = useParams();
-
+  // Your render function
   const { data, isLoading } = useGetFilesQuery();
+  const { title } = useParams();
+  // const toolbarPluginInstance = toolbarPlugin();
+  // const { Toolbar } = toolbarPluginInstance;
 
   if (isLoading) {
     return;
@@ -24,10 +18,36 @@ const ReadPdf = () => {
   const pdf = data.data.filter((item) => item.title == title);
 
   return (
-    <div className="">
-      <PdfComp
-        pdfFile={`https://e-library-2kxw.onrender.com/files/${pdf[0].pdf}`}
-      />
+    <div
+      className="rpv-core__viewer"
+      style={{
+        border: "1px solid rgba(0, 0, 0, 0.3)",
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+      }}
+    >
+      <div
+        style={{
+          alignItems: "center",
+          backgroundColor: "#eeeeee",
+          borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
+          display: "flex",
+          padding: "4px",
+        }}
+      >
+        {/* <Toolbar /> */}
+      </div>
+      <div
+        style={{
+          flex: 1,
+          overflow: "hidden",
+        }}
+      >
+        <Viewer
+          fileUrl={`https://e-library-2kxw.onrender.com/files/${pdf[0].pdf}`}
+        />
+      </div>
     </div>
   );
 };

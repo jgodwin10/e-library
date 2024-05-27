@@ -17,32 +17,35 @@ import RefundBooks from "./Admin/RefundBooks";
 import Collections from "./Admin/Collections";
 import Hello from "./pages/hello";
 import ReadPdf from "./pages/ReadPdf";
+import { Worker } from "@react-pdf-viewer/core";
 
 const App = () => {
   return (
     <div>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/hello" element={<Hello />} />
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/find-book" element={<FindBook />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/upload" element={<Upload />} />
-            <Route path="/collections" element={<Collections />} />
-            <Route path="/refunded-books" element={<RefundBooks />} />
-            <Route path="/borrowed-books" element={<BorrowedBooks />} />
-            <Route path="/all-students" element={<AllStudents />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/departments" element={<Department />} />
-            <Route path="/all-books" element={<AllBooks />} />
-            <Route path="/:name" element={<DepartmentView />} />
-            <Route path="/pdf/:title" element={<ReadPdf />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <Worker workerUrl="https://unpkg.com/pdfjs-dist@3.4.120/build/pdf.worker.min.js">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/hello" element={<Hello />} />
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/find-book" element={<FindBook />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/upload" element={<Upload />} />
+              <Route path="/collections" element={<Collections />} />
+              <Route path="/refunded-books" element={<RefundBooks />} />
+              <Route path="/borrowed-books" element={<BorrowedBooks />} />
+              <Route path="/all-students" element={<AllStudents />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/departments" element={<Department />} />
+              <Route path="/all-books" element={<AllBooks />} />
+              <Route path="/:name" element={<DepartmentView />} />
+              <Route path="/pdf/:title" element={<ReadPdf />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </Worker>
     </div>
   );
 };
