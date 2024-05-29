@@ -86,7 +86,7 @@ app.post("/borrow", async (req, res) => {
   }
 });
 
-app.post("/refund", async (req, res) => {
+app.post("/refund/:id", async (req, res) => {
   const { id } = req.params;
 
   const refund = await Borrowed.findByIdAndDelete({ _id: id });
