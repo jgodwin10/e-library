@@ -6,10 +6,9 @@ import router from "./src/Router/UserRoutes.js";
 import multer from "multer";
 import { Books } from "./src/config/db/BooksModel.js";
 import cors from "cors";
-
+import { User } from "./src/config/db/userModel.js";
 
 dotenv.config();
-
 
 mongoose.connect(process.env.MONGODB).then(() => {
   console.log("connected");
@@ -33,13 +32,11 @@ const storage = multer.diskStorage({
   },
 });
 
-
-
 const upload = multer({ storage: storage });
 
-app.get('/upload-files', (req, res) => {
-  res.send('Heloo')
-})
+app.get("/upload-files", (req, res) => {
+  res.send("Heloo");
+});
 
 app.post(
   "/upload-files",
@@ -52,8 +49,6 @@ app.post(
     const pdf = req.files.file[0].filename;
     const image = req.files.image[0].filename;
 
-
-
     try {
       await Books.create({ title, pdf, image, author, category });
       res.send({ status: "ok" });
@@ -63,7 +58,11 @@ app.post(
   }
 );
 
+app.get("/students", async (req, res) => {
+  const students = await User.find({ isAdmin: false }).sort({ createdAt: -1 });
 
+  res.status(200).json(students);
+});
 
 app.get("/get-files", async (req, res) => {
   try {
