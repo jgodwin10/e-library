@@ -36,7 +36,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 app.get("/upload-files", (req, res) => {
-  res.send("Heloo");
+  res.send("Upload Successful");
 });
 
 app.post(
@@ -80,9 +80,9 @@ app.post("/borrow", async (req, res) => {
       author,
       matric,
     });
-    res.send("Book Borrowed successfully");
+    res.status(201).send("Book Borrowed successfully");
   } catch (err) {
-    res.json({ status: err });
+    res.send(err);
   }
 });
 
@@ -92,11 +92,10 @@ app.get("/borrow", async (req, res) => {
   res.status(200).json(BorrowedBooks);
 });
 
-app.get("/my_borrowed/:matric", async (req, res) => {
-  const { matric } = req.params;
+app.get("/my_borrowed/", async (req, res) => {
+  const { matric } = req.query;
 
   console.log(matric);
-
   const exist = await Borrowed.find({ matric }).sort({ createdAt: -1 });
 
   res.status(201).json(exist);

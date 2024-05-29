@@ -11,7 +11,7 @@ const AllStudents = () => {
 
   return (
     <div className="py-10 md:overflow-x-auto overflow-x-scroll max-w-[1600px] md:px-8 px-4 mx-auto">
-      <h2 className="text-center text-2xl font-semibold pb-6">
+      <h2 className="text-center text-[18px]  md:text-2xl font-semibold pb-6">
         Students Database
       </h2>
       <table className="min-w-[1400px] md:w-full border-collapse">

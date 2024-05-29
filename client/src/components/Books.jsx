@@ -5,6 +5,7 @@ import PdfComp from "../PdfComp";
 import ReadPdf from "../pages/ReadPdf";
 import { useNavigate } from "react-router-dom";
 import { useBorrowMutation } from "../redux/ApiSlice";
+import toast from "react-hot-toast";
 
 const Books = ({ pdf }) => {
   const users = JSON.parse(localStorage.getItem("details"));
@@ -28,11 +29,15 @@ const Books = ({ pdf }) => {
   };
 
   const handleBorrow = async () => {
-    try {
-      const res = await borrow(formData).unwrap();
-      console.log(res);
-    } catch (err) {
-      console.log(err);
+    if (users?.isAdmin == "false") {
+      try {
+        const res = await borrow(formData).unwrap();
+        toast.success("Book Successfully Borrowed");
+      } catch (err) {}
+    } else if (users?.isAdmin == "true") {
+      toast.error("Admin can't borrow Books");
+    } else {
+      toast.error("Only Logged in student can borrow Books");
     }
   };
 

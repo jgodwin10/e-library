@@ -11,8 +11,7 @@ const BorrowedSchema = new mongoose.Schema(
     category: String,
     matric: String,
   },
-  { timestamps: true },
-  { collection: "Borrowed" }
+  { timestamps: true }
 );
 
 export const Borrowed = mongoose.model("Borrowed", BorrowedSchema);
