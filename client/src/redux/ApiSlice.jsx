@@ -45,6 +45,13 @@ export const ApiSlice = createApi({
         url: `/my_borrowed/?matric=${matric}`,
         method: "GET",
       }),
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ id }) => ({ type: "Posts", id })),
+              { type: "Posts", id: "LIST" },
+            ]
+          : [{ type: "Posts", id: "LIST" }],
     }),
 
     getBorrow: build.query({
@@ -52,6 +59,13 @@ export const ApiSlice = createApi({
         url: "/borrow",
         method: "GET",
       }),
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ id }) => ({ type: "Posts", id })),
+              { type: "Posts", id: "LIST" },
+            ]
+          : [{ type: "Posts", id: "LIST" }],
     }),
 
     getFiles: build.query({
@@ -59,12 +73,26 @@ export const ApiSlice = createApi({
         url: "/get-files",
         method: "GET",
       }),
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.data.map(({ id }) => ({ type: "Posts", id })),
+              { type: "Posts", id: "LIST" },
+            ]
+          : [{ type: "Posts", id: "LIST" }],
     }),
     getStudents: build.query({
       query: () => ({
         url: "/students",
         method: "GET",
       }),
+      providesTags: (result) =>
+        result
+          ? [
+              ...result.map(({ id }) => ({ type: "Posts", id })),
+              { type: "Posts", id: "LIST" },
+            ]
+          : [{ type: "Posts", id: "LIST" }],
     }),
   }),
 });
