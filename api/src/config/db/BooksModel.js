@@ -6,7 +6,7 @@ const BookSchema = new mongoose.Schema(
     pdf: String,
     title: String,
     author: String,
-    category: String
+    category: String,
   },
   { collection: "Books" }
 );

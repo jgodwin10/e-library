@@ -7,6 +7,7 @@ import multer from "multer";
 import { Books } from "./src/config/db/BooksModel.js";
 import cors from "cors";
 import { User } from "./src/config/db/userModel.js";
+import { Borrowed } from "./src/config/db/BorrowedModel.js";
 
 dotenv.config();
 
@@ -62,6 +63,43 @@ app.get("/students", async (req, res) => {
   const students = await User.find({ isAdmin: false }).sort({ createdAt: -1 });
 
   res.status(200).json(students);
+});
+
+app.post("/borrow", async (req, res) => {
+  const { lastname, firstname, matric, pdf, title, image, category, author } =
+    req.body;
+
+  try {
+    await Borrowed.create({
+      lastname,
+      firstname,
+      pdf,
+      title,
+      image,
+      category,
+      author,
+      matric,
+    });
+    res.send("Book Borrowed successfully");
+  } catch (err) {
+    res.json({ status: err });
+  }
+});
+
+app.get("/borrow", async (req, res) => {
+  const BorrowedBooks = await Borrowed.find({}).sort({ createdAt: -1 });
+
+  res.status(200).json(BorrowedBooks);
+});
+
+app.get("/my_borrowed/:matric", async (req, res) => {
+  const { matric } = req.params;
+
+  console.log(matric);
+
+  const exist = await Borrowed.find({ matric }).sort({ createdAt: -1 });
+
+  res.status(201).json(exist);
 });
 
 app.get("/get-files", async (req, res) => {

@@ -6,22 +6,18 @@ const UserSchema = new Schema({
   department: {
     type: String,
     required: true,
-    unique: true,
   },
   isAdmin: {
     type: String,
     required: true,
-    unique: true,
   },
   firstname: {
     type: String,
     required: true,
-    unique: true,
   },
   lastname: {
     type: String,
     required: true,
-    unique: true,
   },
   matric: {
     type: String,

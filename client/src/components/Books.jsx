@@ -4,13 +4,37 @@ import Book from "../images/Books.jpg";
 import PdfComp from "../PdfComp";
 import ReadPdf from "../pages/ReadPdf";
 import { useNavigate } from "react-router-dom";
+import { useBorrowMutation } from "../redux/ApiSlice";
 
 const Books = ({ pdf }) => {
+  const users = JSON.parse(localStorage.getItem("details"));
+
+  const [borrow] = useBorrowMutation();
   const navigate = useNavigate();
 
+  const [formData, setformData] = useState({
+    lastname: users?.lastname,
+    firstname: users?.firstname,
+    matric: users?.matric,
+    title: pdf?.title,
+    author: pdf?.author,
+    image: pdf?.image,
+    pdf: pdf?.pdf,
+    category: users?.department,
+  });
+
   const readNow = () => {
-    navigate(`/pdf/${pdf.title}`)
-  }
+    navigate(`/pdf/${pdf.title}`);
+  };
+
+  const handleBorrow = async () => {
+    try {
+      const res = await borrow(formData).unwrap();
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="bg-white mb-10 border rounded-xl">
@@ -24,10 +48,16 @@ const Books = ({ pdf }) => {
 
         <p>{pdf.author}</p>
 
-        <button className="mt-4 border-2 font-semibold text-blue-500 hover:bg-blue-500 hover:text-white duration-1000 border-blue-500 w-full md:py-3 md:text-base text-[12px] py-2">
+        <button
+          onClick={handleBorrow}
+          className="mt-4 border-2 font-semibold text-blue-500 hover:bg-blue-500 hover:text-white duration-1000 border-blue-500 w-full md:py-3 md:text-base text-[12px] py-2"
+        >
           Borrow Now
         </button>
-        <button onClick={readNow} className="border-2  rounded-b-xl font-semibold text-blue-500 hover:bg-blue-500 hover:text-white duration-1000 border-blue-500 w-full md:py-3 md:text-base text-[12px] py-2">
+        <button
+          onClick={readNow}
+          className="border-2  rounded-b-xl font-semibold text-blue-500 hover:bg-blue-500 hover:text-white duration-1000 border-blue-500 w-full md:py-3 md:text-base text-[12px] py-2"
+        >
           View Now
         </button>
       </div>
@@ -47,7 +77,6 @@ const Books = ({ pdf }) => {
           )}
         </div>
       </div> */}
-     
 
       {/* <PdfComp pdfFile={pdfFile} /> */}
     </div>
