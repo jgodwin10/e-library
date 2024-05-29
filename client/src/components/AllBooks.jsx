@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Books from "./Books";
 import axios from "axios";
 import { useSelector } from "react-redux";
+import { useGetFilesQuery } from "../redux/ApiSlice";
+import Loading from "./Loading";
 
 const AllBooks = () => {
   const [allImage, setAllImage] = useState([]);
@@ -9,25 +11,13 @@ const AllBooks = () => {
   const [item, setItem] = useState([]);
   const filter = useSelector((state) => state.Util.filter);
   const keyword = useSelector((state) => state.Util.keyword);
-  
-  
 
-
-  const getPdf = async () => {
-    const result = await axios.get(
-      "https://e-library-2kxw.onrender.com/get-files"
-    );
-    setAllImage(result.data.data);
-  };
-
-  useEffect(() => {
-    getPdf();
-  }, []);
+  const { data, isLoading } = useGetFilesQuery();
 
   useEffect(() => {
     if (filter == "" || keyword == "") {
       setItem(
-        allImage.map((item, index) => {
+        data?.data?.map((item, index) => {
           return <Books key={index} pdf={item} />;
         })
       );
@@ -35,8 +25,8 @@ const AllBooks = () => {
 
     if (filter && keyword == "title") {
       setItem(
-        allImage
-          .filter((item) =>
+        data?.data
+          ?.filter((item) =>
             item.title.toLowerCase().includes(filter.toLowerCase())
           )
           .map((item, index) => {
@@ -47,8 +37,8 @@ const AllBooks = () => {
 
     if (filter && keyword == "category") {
       setItem(
-        allImage
-          .filter((item) =>
+        data?.data
+          ?.filter((item) =>
             item.category.toLowerCase().includes(filter.toLowerCase())
           )
           .map((item, index) => {
@@ -59,8 +49,8 @@ const AllBooks = () => {
 
     if (filter && keyword == "author") {
       setItem(
-        allImage
-          .filter((item) =>
+        data?.data
+          ?.filter((item) =>
             item.author.toLowerCase().includes(filter.toLowerCase())
           )
           .map((item, index) => {
@@ -68,12 +58,13 @@ const AllBooks = () => {
           })
       );
     }
+  }, [filter, data]);
 
+  if (isLoading) {
+    return <Loading />;
+  }
 
-
-  }, [filter, allImage]);
-
-  if (item.length <= 0) {
+  if (item?.length <= 0) {
     return (
       <div className="flex items-center justify-center max-w-[1440px] mx-auto md:px-8 px-4 h-[50vh]">
         <p className="md:text-4xl font-semibold text-2xl">

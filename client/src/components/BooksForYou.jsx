@@ -9,6 +9,8 @@ import { Pagination, Autoplay } from "swiper/modules";
 import { pdfjs } from "react-pdf";
 import PdfComp from "../PdfComp";
 import axios from "axios";
+import { useGetFilesQuery } from "../redux/ApiSlice";
+import Loading from "./Loading";
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.js",
@@ -19,21 +21,27 @@ const BooksForYou = () => {
   const [allImage, setAllImage] = useState([]);
   const [pdfFile, setPdfFile] = useState(null);
 
-  useEffect(() => {
-    getPdf();
-  }, []);
+  const { data, isLoading } = useGetFilesQuery();
 
-  const getPdf = async () => {
-    const result = await axios.get(
-      "https://e-library-2kxw.onrender.com/get-files"
-    );
-    setAllImage(result.data.data);
-  };
+  if (isLoading) {
+    return <Loading />;
+  }
 
-  const showPdf = (pdf) => {
-    // window.open(`http://localhost:5000/files/${pdf}`, "_blank", "noreferrer");
-    setPdfFile(`https://e-library-2kxw.onrender.com/files/${pdf}`);
-  };
+  // useEffect(() => {
+  //   getPdf();
+  // }, []);
+
+  // const getPdf = async () => {
+  //   const result = await axios.get(
+  //     "https://e-library-2kxw.onrender.com/get-files"
+  //   );
+  //   setAllImage(result.data.data);
+  // };
+
+  // const showPdf = (pdf) => {
+  //   // window.open(`http://localhost:5000/files/${pdf}`, "_blank", "noreferrer");
+  //   setPdfFile(`https://e-library-2kxw.onrender.com/files/${pdf}`);
+  // };
 
   return (
     <div className="py-10 px-4 md:px-8">
@@ -69,7 +77,7 @@ const BooksForYou = () => {
         modules={[Pagination, Autoplay]}
         className="mySwiper max-w-[1440px] mx-auto"
       >
-        {allImage.map((item, index) => {
+        {data.data.map((item, index) => {
           return (
             <SwiperSlide key={index}>
               {" "}

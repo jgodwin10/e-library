@@ -18,6 +18,7 @@ import Collections from "./Admin/Collections";
 import Hello from "./pages/hello";
 import ReadPdf from "./pages/ReadPdf";
 import { Worker } from "@react-pdf-viewer/core";
+import Faculties from "./pages/Faculties";
 
 const App = () => {
   return (
@@ -38,7 +39,8 @@ const App = () => {
               <Route path="/borrowed-books" element={<BorrowedBooks />} />
               <Route path="/all-students" element={<AllStudents />} />
               <Route path="/profile" element={<Profile />} />
-              <Route path="/departments" element={<Department />} />
+              <Route path="/physical-science" element={<Department />} />
+              <Route path="/faculties" element={<Faculties />} />
               <Route path="/all-books" element={<AllBooks />} />
               <Route path="/:name" element={<DepartmentView />} />
               <Route path="/pdf/:title" element={<ReadPdf />} />

@@ -225,12 +225,12 @@ const Navbar = () => {
           </Link>
           <Link
             onClick={() => setOpen(!open)}
-            to={"/departments"}
+            to={"/faculties"}
             className={` px-7 duration-500 block text-center md:w-auto w-[40%] rounded-3xl font-semibold py-2 ${
-              location == "/departments" ? "bg-white   text-blue-500" : ""
+              location == "/faculties" ? "bg-white   text-blue-500" : ""
             }`}
           >
-            Departments
+            Faculties
           </Link>
           <Link
             onClick={() => setOpen(!open)}
