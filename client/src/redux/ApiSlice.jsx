@@ -33,6 +33,13 @@ export const ApiSlice = createApi({
       }),
     }),
 
+    refund: build.mutation({
+      query: (id) => ({
+        url: `/refund/${id}`,
+        method: "POST",
+      }),
+    }),
+
     myBorrow: build.query({
       query: (matric) => ({
         url: `/my_borrowed/?matric=${matric}`,
@@ -70,4 +77,5 @@ export const {
   useBorrowMutation,
   useGetBorrowQuery,
   useMyBorrowQuery,
+  useRefundMutation,
 } = ApiSlice;

@@ -86,6 +86,14 @@ app.post("/borrow", async (req, res) => {
   }
 });
 
+app.post("/refund", async (req, res) => {
+  const { id } = req.params;
+
+  const refund = await Borrowed.findByIdAndDelete({ _id: id });
+
+  res.send("Book Refunded");
+});
+
 app.get("/borrow", async (req, res) => {
   const BorrowedBooks = await Borrowed.find({}).sort({ createdAt: -1 });
 

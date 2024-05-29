@@ -11,6 +11,7 @@ const Collections = () => {
   if (isLoading) {
     return <Loading />;
   }
+  
 
   return (
     <div className=" max-w-[1600px] pb-10 mx-auto mt-8 md:px-8 px-4">
@@ -18,7 +19,7 @@ const Collections = () => {
         Borrowed Books
       </h2>
       <div className="grid gap-x-4 grid-cols-2 lg:grid-cols-4 md:grid-cols-3">
-        {data.map((index, item) => {
+        {data.map((item, index) => {
           return <BorrowBook key={index} item={item} />;
         })}
       </div>
