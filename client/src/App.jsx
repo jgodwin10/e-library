@@ -19,6 +19,8 @@ import Hello from "./pages/hello";
 import ReadPdf from "./pages/ReadPdf";
 import { Worker } from "@react-pdf-viewer/core";
 import Faculties from "./pages/Faculties";
+import Education from "./pages/Education";
+import LifeScience from "./pages/LifeScience";
 
 const App = () => {
   return (
@@ -40,9 +42,11 @@ const App = () => {
               <Route path="/all-students" element={<AllStudents />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/physical-science" element={<Department />} />
+              <Route path="/education" element={<Education />} />
+              <Route path="/life-science" element={<LifeScience />} />
               <Route path="/faculties" element={<Faculties />} />
               <Route path="/all-books" element={<AllBooks />} />
-              <Route path="/:name" element={<DepartmentView />} />
+              <Route path="/:title" element={<DepartmentView />} />
               <Route path="/pdf/:title" element={<ReadPdf />} />
             </Route>
           </Routes>

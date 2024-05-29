@@ -11,6 +11,19 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <Provider store={store}>
       <App />
     </Provider>
-    <Toaster position="top-right" />
+    <Toaster
+      containerStyle={{
+        top: 100,
+        right: 30,
+      }}
+      toastOptions={{
+        className: "",
+        style: {
+          border: "1px solid #713200",
+          padding: "16px",
+        },
+      }}
+      position="top-right"
+    />
   </React.StrictMode>
 );

@@ -11,7 +11,21 @@ const Collections = () => {
   if (isLoading) {
     return <Loading />;
   }
-  
+
+  if (data.length == 0) {
+    return (
+      <div className=" max-w-[1600px] pb-10 mx-auto mt-8 md:px-8 px-4">
+        <h2 className="text-center font-semibold pb-7 md:text-2xl text-[18px]">
+          Borrowed Books
+        </h2>
+        <div className="h-[40vh] flex justify-center items-center">
+          <h2 className="text-center pb-7 md:text-xl text-[14px]">
+            You don't have any Borrowed Books
+          </h2>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className=" max-w-[1600px] pb-10 mx-auto mt-8 md:px-8 px-4">

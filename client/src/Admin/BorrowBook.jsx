@@ -17,11 +17,9 @@ const BorrowBook = ({ item }) => {
     try {
       const res = await refund(item._id).unwrap();
 
-      if (res) {
-        toast.success(res.status);
-      }
+      toast.success(res.status);
 
-      window.location.reload(true);
+       window.location.reload(true);
     } catch (err) {
       console.log(err);
       toast.error("Book not Refunded");

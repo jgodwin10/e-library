@@ -18,12 +18,15 @@ const BooksCategory = () => {
             Physical Science
           </p>
         </Link>
-        <div className="bg-white rounded-md md:pt-3 p-2 md:px-3">
+        <Link
+          to={"life-science"}
+          className="bg-white rounded-md md:pt-3 p-2 md:px-3"
+        >
           <img className="rounded-md" src={Book} alt="" />
           <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold py-1 md:pt-3 md:pb-4">
             Life Science
           </p>
-        </div>
+        </Link>
         <div className="bg-white rounded-md md:pt-3 p-2 md:px-3">
           <img className="rounded-md" src={Book} alt="" />
           <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold py-1 md:pt-3 md:pb-4">
@@ -36,12 +39,15 @@ const BooksCategory = () => {
             Engineering
           </p>
         </div>
-        <div className="bg-white rounded-md md:pt-3 p-2 md:px-3">
+        <Link
+          to={"education"}
+          className="bg-white rounded-md md:pt-3 p-2 md:px-3"
+        >
           <img className="rounded-md" src={Book} alt="" />
           <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold md:pt-3 py-1 md:pb-4">
             Education
           </p>
-        </div>
+        </Link>
       </div>
     </div>
   );
