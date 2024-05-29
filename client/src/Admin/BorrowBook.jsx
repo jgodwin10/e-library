@@ -16,8 +16,10 @@ const BorrowBook = ({ item }) => {
   const handleRefund = async () => {
     try {
       const res = await refund(item._id).unwrap();
+
       toast.success("Book Refunded");
     } catch (err) {
+      console.log(err);
       toast.error("Book not Refunded");
     }
   };

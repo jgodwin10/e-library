@@ -80,7 +80,7 @@ app.post("/borrow", async (req, res) => {
       author,
       matric,
     });
-    res.status(201).send("Book Borrowed successfully");
+    res.status(201).send({ status: "Book Borrowed successfully" });
   } catch (err) {
     res.send(err);
   }
@@ -91,7 +91,7 @@ app.post("/refund/:id", async (req, res) => {
 
   const refund = await Borrowed.findByIdAndDelete({ _id: id });
 
-  res.send("Book Refunded");
+  res.send({ status: "Book Refunded" });
 });
 
 app.get("/borrow", async (req, res) => {
