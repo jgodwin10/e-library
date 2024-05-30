@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 table tr,
 table th,
 table td {
@@ -14,11 +18,10 @@ table td {
 }
 
 .pdf-div {
-    margin: 0 auto;
-    width: 80% !important;
-    height: 100% !important;
+  margin: 0 auto;
+  width: 80% !important;
+  height: 100% !important;
 }
-
 
 /* LoadSpinner.css */
 .loader {

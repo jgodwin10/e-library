@@ -21,6 +21,13 @@ import { Worker } from "@react-pdf-viewer/core";
 import Faculties from "./pages/Faculties";
 import Education from "./pages/Education";
 import LifeScience from "./pages/LifeScience";
+import Engineering from "./pages/Engineering";
+import Law from "./pages/Law";
+import Art from "./pages/Art";
+import SocialScience from "./pages/SocialScience";
+import Management from "./pages/Management";
+import Environmental from "./pages/Environmental";
+import Agriculture from "./pages/Agriculture";
 
 const App = () => {
   return (
@@ -43,6 +50,13 @@ const App = () => {
               <Route path="/profile" element={<Profile />} />
               <Route path="/physical-science" element={<Department />} />
               <Route path="/education" element={<Education />} />
+              <Route path="/art" element={<Art />} />
+              <Route path="/social-science" element={<SocialScience />} />
+              <Route path="/management-science" element={<Management />} />
+              <Route path="/environmental" element={<Environmental />} />
+              <Route path="/agriculture" element={<Agriculture />} />
+              <Route path="/engineering" element={<Engineering />} />
+              <Route path="/law" element={<Law />} />
               <Route path="/life-science" element={<LifeScience />} />
               <Route path="/faculties" element={<Faculties />} />
               <Route path="/all-books" element={<AllBooks />} />

@@ -59,6 +59,19 @@ const DepartmentView = () => {
     );
   }
 
+  if (items.length == 0) {
+    return (
+      <div className=" max-w-[1440px] mx-auto md:px-8 px-6">
+        <h1 className="text-center md:text-3xl text-[22px] pb-8 -mb-10 pt-8 font-semibold">
+          {`${title} Books`}
+        </h1>
+        <div className="h-[40vh] md:text-xl  flex justify-center items-center">
+          No Book available for {title}
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className=" max-w-[1440px] mx-auto md:px-8 px-6">
       <h1 className="text-center md:text-3xl text-[22px] pb-8 -mb-10 pt-8 font-semibold">

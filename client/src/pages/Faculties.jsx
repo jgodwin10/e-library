@@ -27,18 +27,24 @@ const Faculties = () => {
             Life Science
           </p>
         </Link>
-        <div className="bg-white border-2 border-blue-500 rounded-md md:pt-3 p-2 md:px-3">
+        <Link
+          to={"/law"}
+          className="bg-white border-2 border-blue-500 rounded-md md:pt-3 p-2 md:px-3"
+        >
           <img className="rounded-md" src={Book} alt="" />
           <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold py-1 md:pt-3 md:pb-4">
             Law
           </p>
-        </div>
-        <div className="bg-white border-2 border-blue-500 rounded-md md:pt-3 p-2 md:px-3">
+        </Link>
+        <Link
+          to={"/engineering"}
+          className="bg-white border-2 border-blue-500 rounded-md md:pt-3 p-2 md:px-3"
+        >
           <img className="rounded-md" src={Book} alt="" />
           <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold py-1 md:pt-3 md:pb-4">
             Engineering
           </p>
-        </div>
+        </Link>
         <Link
           to={"/education"}
           className="bg-white border-2 border-blue-500 rounded-md md:pt-3 p-2 md:px-3"
@@ -46,6 +52,51 @@ const Faculties = () => {
           <img className="rounded-md" src={Book} alt="" />
           <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold md:pt-3 py-1 md:pb-4">
             Education
+          </p>
+        </Link>
+        <Link
+          to={"/environmental"}
+          className="bg-white border-2 border-blue-500 rounded-md md:pt-3 p-2 md:px-3"
+        >
+          <img className="rounded-md" src={Book} alt="" />
+          <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold md:pt-3 py-1 md:pb-4">
+            Environmental
+          </p>
+        </Link>
+        <Link
+          to={"/management-science"}
+          className="bg-white border-2 border-blue-500 rounded-md md:pt-3 p-2 md:px-3"
+        >
+          <img className="rounded-md" src={Book} alt="" />
+          <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold md:pt-3 py-1 md:pb-4">
+            Management Science
+          </p>
+        </Link>
+        <Link
+          to={"/art"}
+          className="bg-white border-2 border-blue-500 rounded-md md:pt-3 p-2 md:px-3"
+        >
+          <img className="rounded-md" src={Book} alt="" />
+          <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold md:pt-3 py-1 md:pb-4">
+            Art
+          </p>
+        </Link>
+        <Link
+          to={"/agriculture"}
+          className="bg-white border-2 border-blue-500 rounded-md md:pt-3 p-2 md:px-3"
+        >
+          <img className="rounded-md" src={Book} alt="" />
+          <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold md:pt-3 py-1 md:pb-4">
+            Agriculture
+          </p>
+        </Link>
+        <Link
+          to={"/social-science"}
+          className="bg-white border-2 border-blue-500 rounded-md md:pt-3 p-2 md:px-3"
+        >
+          <img className="rounded-md" src={Book} alt="" />
+          <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold md:pt-3 py-1 md:pb-4">
+            Social Science
           </p>
         </Link>
       </div>
