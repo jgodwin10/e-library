@@ -37,7 +37,11 @@ const Books = ({ pdf }) => {
     } else if (users?.isAdmin == "true") {
       toast.error("Admin can't borrow Books");
     } else {
-      toast.error("Only Logged in student can borrow Books");
+      toast.error("Only Logged in student can Borrow Books");
+    }
+
+    if (!users) {
+      toast.error("Only Logged in student can Borrow Books");
     }
   };
 
