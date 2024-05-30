@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import upload from "../images/Upload.svg";
 import pdf from "../images/pdf.png";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Upload = () => {
   const [title, setTitle] = useState("");
@@ -9,6 +11,7 @@ const Upload = () => {
   const [image, setImage] = useState("");
   const [author, setAuthor] = useState("");
   const [category, setCategory] = useState("");
+  const navigate = useNavigate();
 
   const submitImage = async (e) => {
     e.preventDefault();
@@ -20,20 +23,21 @@ const Upload = () => {
     formData.append("category", category);
 
     const result = await axios.post(
-      "http://localhost:3000/upload-files",
+      "https://e-library-2kxw.onrender.com/upload-files",
       formData,
       {
         headers: { "Content-Type": "multipart/form-data" },
       }
     );
-    console.log(result);
+
     if (result.data.status == "ok") {
+      toast.success("Uploaded Successfully!!!");
       setAuthor("");
       setCategory("");
       setFile("");
       setImage("");
       setTitle("");
-      alert("Uploaded Successfully!!!");
+      navigate("/");
     }
   };
 
@@ -51,6 +55,7 @@ const Upload = () => {
             className="border px-3 py-1 rounded-lg bg-[#F0F2F5]"
             placeholder="Title"
             required
+            value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
         </label>
@@ -62,6 +67,7 @@ const Upload = () => {
             className="border px-3 mt-1 py-1 rounded-lg bg-[#F0F2F5]"
             placeholder="Author's Name"
             required
+            value={author}
             onChange={(e) => setAuthor(e.target.value)}
           />
         </label>
@@ -119,6 +125,7 @@ const Upload = () => {
           className="max-w-[700px] bg-[#F0F2F5] py-2 px-4 rounded-lg"
           name="department"
           id=""
+          value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
           <option value="">Choose Department</option>
