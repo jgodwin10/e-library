@@ -28,8 +28,12 @@ const Upload = () => {
     );
     console.log(result);
     if (result.data.status == "ok") {
+      setAuthor("");
+      setCategory("");
+      setFile("");
+      setImage("");
+      setTitle("");
       alert("Uploaded Successfully!!!");
-      getPdf();
     }
   };
 
@@ -122,6 +126,46 @@ const Upload = () => {
           <option>Physics</option>
           <option>Mathematics</option>
           <option>Chemistry</option>
+          <option>Agric Economic and Extension</option>
+          <option>Animal Science</option>
+          <option>Crop Science</option>
+          <option>Soil Science</option>
+          <option>English</option>
+          <option>Modern Languages</option>
+          <option>Philosophy</option>
+          <option>Religion Management & Cultural Studies</option>
+          <option>Theatre and Media Art</option>
+          <option>Business Education</option>
+          <option>Curriculum and Instruction</option>
+          <option>Guidance And Counselling</option>
+          <option>Physical And Health Education</option>
+          <option>Civil Engineering</option>
+          <option value={"Electrical and Electronic"}>
+            Electrical/Electronic Engineering
+          </option>
+          <option>Mechanical Engineering</option>
+          <option>Industrial and Production Engineering</option>
+          <option>Architecture</option>
+          <option>Building</option>
+          <option>Fine and Applied Art</option>
+          <option>Geography & Environmental Management</option>
+          <option>Commercial and Industrial Law</option>
+          <option>Jurisprudence & International Law</option>
+          <option>Private and Property Law</option>
+          <option>Public Law</option>
+          <option>Biochemistry</option>
+          <option>Botany</option>
+          <option value={"Human Nutrition"}>Human Nutrition & Dietetics</option>
+          <option>Microbiology</option>
+          <option>Zoology</option>
+          <option>Accounting</option>
+          <option>Banking and Finance</option>
+          <option>Business Administration</option>
+          <option>Public Administration</option>
+          <option>Economic</option>
+          <option>Political Science</option>
+          <option>Psychology</option>
+          <option>Sociology</option>
         </select>
         <button
           className="bg-blue-500 rounded-xl py-1 px-6 text-white mt-4"

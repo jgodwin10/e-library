@@ -29,7 +29,7 @@ const LifeScience = () => {
         <h2 className="text-center md:text-2xl text-[20px] font-semibold py-3">
           Micro Biology
         </h2>
-        <BooksCat name={"Micro Biology"} link={"Microbology"} />
+        <BooksCat name={"Micro Biology"} link={"Microbiology"} />
       </div>
       <div>
         <h2 className="text-center md:text-2xl text-[20px] font-semibold py-3">
