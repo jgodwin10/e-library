@@ -13,7 +13,6 @@ const BooksCategory = () => {
           to={"/physical-science"}
           className="bg-white rounded-md duration-500 md:pt-3 p-2 md:px-3"
         >
-          <img className="rounded-md" src={Book} alt="" />
           <p className="text-blue-500  cursor-pointer md:text-[22px] text-center font-semibold py-1 md:pt-3 md:pb-4">
             Physical Science
           </p>
@@ -22,13 +21,11 @@ const BooksCategory = () => {
           to={"/life-science"}
           className="bg-white rounded-md md:pt-3 p-2 md:px-3"
         >
-          <img className="rounded-md" src={Book} alt="" />
           <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold py-1 md:pt-3 md:pb-4">
             Life Science
           </p>
         </Link>
         <Link to={"/law"} className="bg-white rounded-md md:pt-3 p-2 md:px-3">
-          <img className="rounded-md" src={Book} alt="" />
           <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold py-1 md:pt-3 md:pb-4">
             Law
           </p>
@@ -37,7 +34,6 @@ const BooksCategory = () => {
           to={"/engineering"}
           className="bg-white rounded-md md:pt-3 p-2 md:px-3"
         >
-          <img className="rounded-md" src={Book} alt="" />
           <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold py-1 md:pt-3 md:pb-4">
             Engineering
           </p>
@@ -46,7 +42,6 @@ const BooksCategory = () => {
           to={"/education"}
           className="bg-white rounded-md md:pt-3 p-2 md:px-3"
         >
-          <img className="rounded-md" src={Book} alt="" />
           <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold md:pt-3 py-1 md:pb-4">
             Education
           </p>
@@ -55,7 +50,6 @@ const BooksCategory = () => {
           to={"/environmental"}
           className="bg-white   rounded-md md:pt-3 p-2 md:px-3"
         >
-          <img className="rounded-md" src={Book} alt="" />
           <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold md:pt-3 py-1 md:pb-4">
             Environmental
           </p>
@@ -64,13 +58,11 @@ const BooksCategory = () => {
           to={"/management-science"}
           className="bg-white  rounded-md md:pt-3 p-2 md:px-3"
         >
-          <img className="rounded-md" src={Book} alt="" />
           <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold md:pt-3 py-1 md:pb-4">
             Management Science
           </p>
         </Link>
         <Link to={"/art"} className="bg-white  rounded-md md:pt-3 p-2 md:px-3">
-          <img className="rounded-md" src={Book} alt="" />
           <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold md:pt-3 py-1 md:pb-4">
             Art
           </p>
@@ -79,7 +71,6 @@ const BooksCategory = () => {
           to={"/agriculture"}
           className="bg-white  rounded-md md:pt-3 p-2 md:px-3"
         >
-          <img className="rounded-md" src={Book} alt="" />
           <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold md:pt-3 py-1 md:pb-4">
             Agriculture
           </p>
@@ -88,7 +79,6 @@ const BooksCategory = () => {
           to={"/social-science"}
           className="bg-white rounded-md md:pt-3 p-2 md:px-3"
         >
-          <img className="rounded-md" src={Book} alt="" />
           <p className="text-blue-500 cursor-pointer md:text-[22px] text-center font-semibold md:pt-3 py-1 md:pb-4">
             Social Science
           </p>

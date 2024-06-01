@@ -32,10 +32,10 @@ const Footer = () => {
                 All Books
               </Link>
               <Link
-                to={"/faculty"}
+                to={"/faculties"}
                 className="hover:text-white/70 duration-500 md:text-base text-[13px]"
               >
-                Faculty
+                Faculties
               </Link>
               <Link
                 to={"/about"}

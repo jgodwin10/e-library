@@ -105,7 +105,7 @@ const Navbar = () => {
                     !acc ? "-translate-y-[50vh]" : "translate-y-0"
                   } `}
                 >
-                  <p
+                  {/* <p
                     onClick={() => {
                       navigate("/profile");
                       setAcc(!acc);
@@ -113,7 +113,7 @@ const Navbar = () => {
                     className="hover:text-black/80 duration-700 cursor-pointer"
                   >
                     Profile
-                  </p>
+                  </p> */}
                   <p
                     onClick={() => {
                       navigate("/collections");
@@ -174,7 +174,7 @@ const Navbar = () => {
                   >
                     Borrowed Books
                   </p>
-                  <p
+                  {/* <p
                     onClick={() => {
                       navigate("/refunded-books");
                       setAcc(!acc);
@@ -182,7 +182,7 @@ const Navbar = () => {
                     className="hover:text-black/80 duration-700 cursor-pointer"
                   >
                     Refunded Books
-                  </p>
+                  </p> */}
                   <p
                     onClick={handleLogout}
                     className="hover:text-black/80 duration-700 cursor-pointer"
@@ -232,7 +232,7 @@ const Navbar = () => {
           >
             Faculties
           </Link>
-          <Link
+          {/* <Link
             onClick={() => setOpen(!open)}
             to={"/about"}
             className={` px-7 duration-500 block text-center md:w-auto w-[40%] rounded-3xl font-semibold py-2 ${
@@ -240,7 +240,7 @@ const Navbar = () => {
             }`}
           >
             About
-          </Link>
+          </Link> */}
           <Link
             onClick={() => setOpen(!open)}
             to={"/find-book"}
@@ -250,7 +250,7 @@ const Navbar = () => {
           >
             Can't Find A Book
           </Link>
-          <Link
+          {/* <Link
             onClick={() => setOpen(!open)}
             to={"/contact"}
             className={` px-7 duration-500 block text-center md:w-auto w-[40%] rounded-3xl font-semibold py-2 ${
@@ -258,7 +258,7 @@ const Navbar = () => {
             }`}
           >
             Contact
-          </Link>
+          </Link> */}
           {!user && (
             <div className="flex items-center pt-8 md:hidden">
               <p
