@@ -37,6 +37,7 @@ export default function LoginPage() {
         const res = await login(formData).unwrap();
         dispatch(setCredentials(res));
         navigate("/");
+        window.location.reload(true);
         setFormData({ matric: "", password: "" });
       } catch (err) {
         setError(err.data.message);

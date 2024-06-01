@@ -43,6 +43,7 @@ export default function Register() {
         lastname: "",
         department: "",
       });
+      window.location.reload(true);
     } catch (err) {
       console.log(err);
     }
