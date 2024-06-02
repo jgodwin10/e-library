@@ -37,24 +37,24 @@ const Footer = () => {
               >
                 Faculties
               </Link>
-              <Link
+              {/* <Link
                 to={"/about"}
                 className="hover:text-white/70 duration-500 md:text-base text-[13px]"
               >
                 About
-              </Link>
+              </Link> */}
               <Link
                 to={"/find-book"}
                 className="hover:text-white/70 duration-500 md:text-base text-[13px]"
               >
                 Can't Find A Book
               </Link>
-              <Link
+              {/* <Link
                 to={"/contact"}
                 className="hover:text-white/70 duration-500 md:text-base text-[13px]"
               >
                 Contact
-              </Link>
+              </Link> */}
             </ul>
           </div>
           <div>
@@ -74,6 +74,11 @@ const Footer = () => {
               Info@aaue.com
             </div>
           </div>
+
+          <p className="text-white capitalize">
+            providing access to content, this library offer features for
+            organizing, searching, and retrieving information
+          </p>
         </div>
       </div>
     </div>
