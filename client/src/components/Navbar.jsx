@@ -28,7 +28,7 @@ const Navbar = () => {
   };
 
   const handleSearch = (e) => {
-    dispatch(search(query));
+    dispatch(search(query.trim()));
     dispatch(word(keyword));
     navigate("/all-books");
     setOpen(!open);
@@ -298,7 +298,7 @@ const Navbar = () => {
             <input
               className="bg-transparent placeholder:text-white outline-none w-full px-2 mx-auto"
               type="text"
-              onChange={(e) => setSearch(e.target.value.trim())}
+              onChange={(e) => setSearch(e.target.value)}
               placeholder="Search for a BOOK here"
             />
             <div
