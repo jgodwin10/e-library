@@ -23,7 +23,7 @@ const Upload = () => {
     formData.append("category", category);
 
     const result = await axios.post(
-      "https://e-library-2kxw.onrender.com/upload-files",
+      "http://localhost:3000/upload-files",
       formData,
       {
         headers: { "Content-Type": "multipart/form-data" },
