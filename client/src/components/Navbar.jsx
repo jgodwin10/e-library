@@ -298,7 +298,7 @@ const Navbar = () => {
             <input
               className="bg-transparent placeholder:text-white outline-none w-full px-2 mx-auto"
               type="text"
-              onChange={(e) => setSearch(e.target.value)}
+              onChange={(e) => setSearch(e.target.value.trim())}
               placeholder="Search for a BOOK here"
             />
             <div
